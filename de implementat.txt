@@ -1,0 +1,63 @@
+0.1 - Initial release
+      PCM2X Support for internal memory parameters
+
+0.2 - Added PCM2X EEPROM parameters
+      Added Hera support
+      Simultaneous operation of Hera and PCM2X
+      Revamped interface
+      More robust error handling
+      
+
+
+
+TODO
+===============
+
+more robust error handling
+sa mearga cu hera+pcm2x
+make autorange read more robust
+
+:EEPROM:STARTUP:WRITE nu pare sa mearga
+resize interface
+
+indexerror two_Values
+
+coduri Hera 0x....
+
+functia status de organizat textele
+
+
+
+
+
+INSTRUCTIONS
+===============
+
+reload param why is good
+
+arparms button why is good
+
+ni-visa vs libusbtmc
+
+
+
+
+locale en-us
+editingFinished atentie
+face reload la fiecare scriere
+
+measure freq will automatically set freq to what is measured
+
+arparms auto when all performed
+
+
+automode 255
+
+only one device connected
+
+not all parameters are implemented, only relevant to AV calibration
+Calibration matrix not implemented
+
+
+
+
