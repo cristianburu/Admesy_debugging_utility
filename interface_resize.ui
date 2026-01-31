@@ -4877,8 +4877,8 @@ QGroupBox::title {
        <rect>
         <x>9</x>
         <y>116</y>
-        <width>470</width>
-        <height>370</height>
+        <width>368</width>
+        <height>352</height>
        </rect>
       </property>
       <widget class="QGroupBox" name="groupBox_ar_params_8">
@@ -4886,7 +4886,7 @@ QGroupBox::title {
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>361</width>
+         <width>291</width>
          <height>338</height>
         </rect>
        </property>
@@ -4922,8 +4922,8 @@ QGroupBox::title {
          <rect>
           <x>10</x>
           <y>20</y>
-          <width>326</width>
-          <height>171</height>
+          <width>289</width>
+          <height>159</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_core_params_3">
@@ -4939,197 +4939,6 @@ QGroupBox::title {
          <property name="verticalSpacing">
           <number>0</number>
          </property>
-         <item row="1" column="2">
-          <widget class="QLabel" name="label_int_time_14">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:SENSe:INT</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_avg_6">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Average</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_int_time_11">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Int. Time (μs)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0">
-          <widget class="QLabel" name="label_ar_max_int_time_3">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Max Int. Time (μs)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLabel" name="label_int_time_13">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:SENSe:AUTOrange</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="comboBox_hera_autorange">
-           <property name="minimumSize">
-            <size>
-             <width>45</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>45</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="editable">
-            <bool>false</bool>
-           </property>
-           <property name="placeholderText">
-            <string>clooooosed</string>
-           </property>
-           <item>
-            <property name="text">
-             <string>OFF</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>ON</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="5" column="2">
-          <widget class="QLabel" name="label_sbw_9">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:SENSe:SBW</string>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="1">
           <widget class="QLineEdit" name="lineEdit_hera_int_time">
            <property name="minimumSize">
@@ -5189,89 +4998,8 @@ QGroupBox::title {
            </property>
           </widget>
          </item>
-         <item row="6" column="2">
-          <widget class="QLabel" name="label_ar_max_int_time_4">
-           <property name="minimumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:EEPROM:CONFigure:AUTO:MAXINT</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="QLineEdit" name="lineEdit_hera_freq">
-           <property name="minimumSize">
-            <size>
-             <width>37</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>37</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1">
-          <widget class="QLineEdit" name="lineEdit_hera_max_int_time">
-           <property name="minimumSize">
-            <size>
-             <width>51</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>51</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1/freq - 1s&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0">
-          <widget class="QLabel" name="label_ar_freq_2">
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_int_time_11">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -5291,7 +5019,132 @@ QGroupBox::title {
             </font>
            </property>
            <property name="text">
-            <string>Frequency (Hz)</string>
+            <string>Int. Time (μs)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="0">
+          <widget class="QLabel" name="label_sbw_11">
+           <property name="minimumSize">
+            <size>
+             <width>97</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>97</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Interp. method</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_avg_6">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Average</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_avg_5">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>:SENSe:SP:AVERAGE</string>
+           </property>
+          </widget>
+         </item>
+         <item row="7" column="2">
+          <widget class="QLabel" name="label_int_time_15">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>:SENSe:INTERPOL</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_int_time_13">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>:SENSe:SP:AUTORANGE</string>
            </property>
           </widget>
          </item>
@@ -5320,33 +5173,8 @@ QGroupBox::title {
            </property>
           </widget>
          </item>
-         <item row="5" column="0">
-          <widget class="QLabel" name="label_sbw_10">
-           <property name="minimumSize">
-            <size>
-             <width>97</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>97</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Calibration Matrix</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLabel" name="label_avg_5">
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_int_time_14">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -5366,21 +5194,21 @@ QGroupBox::title {
             </font>
            </property>
            <property name="text">
-            <string>:SENSe:AVERage</string>
+            <string>:SENSe:INT</string>
            </property>
           </widget>
          </item>
-         <item row="5" column="1">
-          <widget class="QComboBox" name="comboBox_sbw_3">
+         <item row="0" column="1">
+          <widget class="QComboBox" name="comboBox_hera_autorange">
            <property name="minimumSize">
             <size>
-             <width>60</width>
+             <width>45</width>
              <height>16</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>60</width>
+             <width>45</width>
              <height>16</height>
             </size>
            </property>
@@ -5396,179 +5224,32 @@ QGroupBox::title {
            <property name="editable">
             <bool>false</bool>
            </property>
+           <property name="placeholderText">
+            <string>clooooosed</string>
+           </property>
            <item>
             <property name="text">
-             <string>off</string>
+             <string>OFF</string>
             </property>
            </item>
            <item>
             <property name="text">
-             <string>factory</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user1</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user2</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user3</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user4</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user5</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user6</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user7</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user8</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user9</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user10</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user11</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user12</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user13</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user14</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user15</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user16</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user17</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user18</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user19</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user20</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user21</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user22</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user23</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user24</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user25</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user26</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user27</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user28</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user29</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user30</string>
+             <string>ON</string>
             </property>
            </item>
           </widget>
          </item>
-         <item row="3" column="0">
-          <widget class="QLabel" name="label_ar_adjmin_3">
+         <item row="7" column="1">
+          <widget class="QComboBox" name="comboBox_hera_interp_method">
            <property name="minimumSize">
             <size>
-             <width>0</width>
+             <width>77</width>
              <height>16</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>16777215</width>
+             <width>77</width>
              <height>16</height>
             </size>
            </property>
@@ -5578,87 +5259,40 @@ QGroupBox::title {
              <pointsize>8</pointsize>
             </font>
            </property>
-           <property name="text">
-            <string>Adj. min (%)</string>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
            </property>
-          </widget>
-         </item>
-         <item row="3" column="1">
-          <widget class="QLineEdit" name="lineEdit_hera_adjmin">
-           <property name="minimumSize">
-            <size>
-             <width>31</width>
-             <height>16</height>
-            </size>
+           <property name="editable">
+            <bool>false</bool>
            </property>
-           <property name="maximumSize">
-            <size>
-             <width>31</width>
-             <height>16</height>
-            </size>
+           <property name="placeholderText">
+            <string>clooooosed</string>
            </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1 - 30&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2">
-          <widget class="QLabel" name="label_ar_max_int_time_5">
-           <property name="minimumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:EEPROM:CONFigure:AUTO:FREQ</string>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2">
-          <widget class="QLabel" name="label_ar_max_int_time_6">
-           <property name="minimumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:EEPROM:CONFigure:AUTO:ADJMIN</string>
-           </property>
+           <item>
+            <property name="text">
+             <string>linear</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cosine</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>cubic</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Catmull-Rom</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>Hermite</string>
+            </property>
+           </item>
           </widget>
          </item>
         </layout>
@@ -5838,6 +5472,1094 @@ QGroupBox::title {
         </layout>
        </widget>
       </widget>
+     </widget>
+     <widget class="QWidget" name="gridLayoutWidget_9">
+      <property name="geometry">
+       <rect>
+        <x>306</x>
+        <y>166</y>
+        <width>359</width>
+        <height>238</height>
+       </rect>
+      </property>
+      <layout class="QGridLayout" name="gridLayout_4">
+       <item row="3" column="0">
+        <widget class="QLabel" name="label_ar_adjmin_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Adj. min (%)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="0">
+        <widget class="QLabel" name="label_ar_max_int_time_3">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Max Int. Time (μs)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="0">
+        <widget class="QLabel" name="label_avg_8">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Resolution</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="0">
+        <widget class="QLabel" name="label_sbw_10">
+         <property name="minimumSize">
+          <size>
+           <width>97</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>97</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Calibration Matrix</string>
+         </property>
+        </widget>
+       </item>
+       <item row="5" column="1">
+        <widget class="QLineEdit" name="lineEdit_hera_max_int_time">
+         <property name="minimumSize">
+          <size>
+           <width>51</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>51</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1/freq - 1s&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="2">
+        <widget class="QLabel" name="label_int_time_22">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:INTERPOL</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="2">
+        <widget class="QLabel" name="label_int_time_23">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:WHITE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="0">
+        <widget class="QLabel" name="label_int_time_16">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Auto-range</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="1">
+        <widget class="QComboBox" name="comboBox_hera_sbw">
+         <property name="minimumSize">
+          <size>
+           <width>60</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>60</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <item>
+          <property name="text">
+           <string>off</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>user</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="5" column="2">
+        <widget class="QLabel" name="label_ar_max_int_time_4">
+         <property name="minimumSize">
+          <size>
+           <width>161</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>161</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:AUTO:MAXINT</string>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="0">
+        <widget class="QLabel" name="label_sbw_12">
+         <property name="minimumSize">
+          <size>
+           <width>97</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>97</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Interp. method</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="0">
+        <widget class="QLabel" name="label_int_time_18">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Int. Time (μs)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="2">
+        <widget class="QLabel" name="label_int_time_17">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:AUTORANGE</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="1">
+        <widget class="QLineEdit" name="lineEdit_hera_freq">
+         <property name="minimumSize">
+          <size>
+           <width>31</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>31</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="2">
+        <widget class="QLabel" name="label_ar_max_int_time_5">
+         <property name="minimumSize">
+          <size>
+           <width>161</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>161</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:AUTO:FREQ</string>
+         </property>
+        </widget>
+       </item>
+       <item row="1" column="2">
+        <widget class="QLabel" name="label_int_time_19">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:SPINT</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="2">
+        <widget class="QLabel" name="label_int_time_20">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:SPAVG</string>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="0">
+        <widget class="QLabel" name="label_avg_7">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Average</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="1">
+        <widget class="QLineEdit" name="lineEdit_hera_adjmin">
+         <property name="minimumSize">
+          <size>
+           <width>31</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>31</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1 - 30&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="6" column="2">
+        <widget class="QLabel" name="label_int_time_21">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:RES</string>
+         </property>
+        </widget>
+       </item>
+       <item row="4" column="0">
+        <widget class="QLabel" name="label_ar_freq_2">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Frequency (Hz)</string>
+         </property>
+        </widget>
+       </item>
+       <item row="3" column="2">
+        <widget class="QLabel" name="label_ar_max_int_time_6">
+         <property name="minimumSize">
+          <size>
+           <width>161</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>161</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:AUTO:ADJMIN</string>
+         </property>
+        </widget>
+       </item>
+       <item row="10" column="2">
+        <widget class="QLabel" name="label_sbw_9">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:SPSBW</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="2">
+        <widget class="QLabel" name="label_int_time_24">
+         <property name="minimumSize">
+          <size>
+           <width>0</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>16777215</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>:EEPROM:CONFigure:USERABS</string>
+         </property>
+        </widget>
+       </item>
+       <item row="8" column="0">
+        <widget class="QLabel" name="label_sbw_13">
+         <property name="minimumSize">
+          <size>
+           <width>97</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>97</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Std. Illuminant</string>
+         </property>
+        </widget>
+       </item>
+       <item row="9" column="0">
+        <widget class="QLabel" name="label_sbw_14">
+         <property name="minimumSize">
+          <size>
+           <width>107</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>107</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Absolute calibration mode</string>
+         </property>
+        </widget>
+       </item>
+       <item row="0" column="1">
+        <widget class="QComboBox" name="comboBox_hera_autorange_eeprom">
+         <property name="minimumSize">
+          <size>
+           <width>45</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>45</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>clooooosed</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>OFF</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>ON</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="1" column="1">
+        <widget class="QLineEdit" name="lineEdit_hera_int_time_eeprom">
+         <property name="minimumSize">
+          <size>
+           <width>51</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>51</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;320 - 1000000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="2" column="1">
+        <widget class="QLineEdit" name="lineEdit_hera_avg_eeprom">
+         <property name="minimumSize">
+          <size>
+           <width>31</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>31</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="toolTip">
+          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1 - 255&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item row="7" column="1">
+        <widget class="QComboBox" name="comboBox_hera_interp_method_eeprom">
+         <property name="minimumSize">
+          <size>
+           <width>77</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>77</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>clooooosed</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>linear</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>cosine</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>cubic</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Catmull-Rom</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>Hermite</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="6" column="1">
+        <widget class="QComboBox" name="comboBox_hera_res_eeprom">
+         <property name="minimumSize">
+          <size>
+           <width>53</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>53</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>clooooosed</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>0.5nm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>1nm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>2.5nm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>5nm</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>10nm</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="9" column="1">
+        <widget class="QComboBox" name="comboBox_hera_abs_cal_method_eeprom">
+         <property name="minimumSize">
+          <size>
+           <width>57</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>57</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>clooooosed</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>factory</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>user</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+       <item row="8" column="1">
+        <widget class="QComboBox" name="comboBox_hera_std_illuminant_eeprom">
+         <property name="minimumSize">
+          <size>
+           <width>51</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="maximumSize">
+          <size>
+           <width>51</width>
+           <height>16</height>
+          </size>
+         </property>
+         <property name="font">
+          <font>
+           <family>Arial Narrow</family>
+           <pointsize>8</pointsize>
+          </font>
+         </property>
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="editable">
+          <bool>false</bool>
+         </property>
+         <property name="placeholderText">
+          <string>clooooosed</string>
+         </property>
+         <item>
+          <property name="text">
+           <string>D65</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>C</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>D50</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>D55</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>D75</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL6</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL7</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL8</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL9</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL10</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL11</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>FL12</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HP1</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HP2</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HP3</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HP4</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>HP5</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>E</string>
+          </property>
+         </item>
+         <item>
+          <property name="text">
+           <string>A</string>
+          </property>
+         </item>
+        </widget>
+       </item>
+      </layout>
      </widget>
     </widget>
    </widget>

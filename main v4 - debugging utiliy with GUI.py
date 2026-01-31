@@ -808,103 +808,230 @@ class MainUI(QMainWindow):
     def hera_reload_parameters (self):
         print ("Hera_reload_parameters launched!")
 
-        # Read from device Autorange
-        # command_py = ":SENSe:SP:AUTORANGE?\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # bytecount = 4096
-        # read_data = ctypes.create_string_buffer (bytecount)
-        # error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        # Read from device Autorange - internal memory
+        command_py = ":SENSe:SP:AUTORANGE?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
 
-        # ar_read = read_data.value.decode("utf-8")[:error_read].strip()
+        ar_read = read_data.value.decode("utf-8")[:error_read].strip()
         
-        # if (ar_read == "Closed") or (ar_read == "Opened"):
-        #     # Reread Autorange
-        #     print ("AUTORANGE: Closed/Opened received")
-        #     self.hera_reload_parameters()
-        # elif (ar_read == ""):
-        #     print ("AUTORANGE: No reply received")
-        #     return
-        # else:
-        #     print ("AUTORANGE: " + ar_read)
-        #     self.comboBox_hera_autorange.blockSignals(True)
-        #     self.comboBox_hera_autorange.setCurrentIndex (int(ar_read))
-        #     self.comboBox_hera_autorange.blockSignals(False)
+        if (ar_read == "Closed") or (ar_read == "Opened"):
+            # Reread Autorange
+            print ("AUTORANGE: Closed/Opened received")
+            self.hera_reload_parameters()
+        elif (ar_read == ""):
+            print ("AUTORANGE: No reply received")
+            return
+        else:
+            print ("AUTORANGE: " + ar_read)
+            self.comboBox_hera_autorange.blockSignals(True)
+            self.comboBox_hera_autorange.setCurrentIndex (int(ar_read))
+            self.comboBox_hera_autorange.blockSignals(False)
 
 
-        # Read from device Int. Time
-        # command_py = ":SENSe:INT?\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # bytecount = 4096
-        # read_data = ctypes.create_string_buffer (bytecount)
-        # error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        # int_time_read = int (read_data.value.decode("utf-8")[:error_read])
-        # self.lineEdit_hera_int_time.setText (str(int_time_read))
+        # Read from device Int. Time - Internal Memory
+        command_py = ":SENSe:INT?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        int_time_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_int_time.setText (str(int_time_read))
 
-        # Read from device Average
-        # command_py = ":SENSe:SP:AVERAGE?\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # bytecount = 4096
-        # read_data = ctypes.create_string_buffer (bytecount)
-        # error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        # avg_read = int (read_data.value.decode("utf-8")[:error_read])
-        # self.lineEdit_hera_avg.setText (str(avg_read))
+        # Read from device Average - internal memory
+        command_py = ":SENSe:SP:AVERAGE?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        avg_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_avg.setText (str(avg_read))
 
-        # Read from device Calibration Matrix - does not seem to work!!!
-        # command_py = ":SENS:SP:SBW?\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # sbw_error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # bytecount = 4096
-        # read_data = ctypes.create_string_buffer (bytecount)
-        # sbw_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        # sbw_read = read_data.value.decode("utf-8")[:error_read].strip()
-        # print (f"SBW is -{sbw_read}-")
-        # print (f"sbw_error_write is -{sbw_error_write}-")
-        # print (f"sbw_error_read is -{sbw_error_read}")
-        # index_comboBox_sbw = self.comboBox_sbw.findText (sbw_read)
-        # print (f"Index combo is {index_comboBox_sbw}")
-        # self.comboBox_sbw.blockSignals(True)
-        # self.comboBox_sbw.setCurrentIndex (index_comboBox_sbw)
-        # self.comboBox_sbw.blockSignals(False)
+        # Read from device Interp Method - from Internal Memory
+        command_py = ":SENSe:INTERPOL?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        interpol_method_read = int (read_data.value.decode("utf-8")[:error_read])
+        print (f"Interpolation index from reload parameters is {interpol_method_read}")
+        self.comboBox_hera_interp_method.blockSignals(True)
+        self.comboBox_hera_interp_method.setCurrentIndex (interpol_method_read)
+        self.comboBox_hera_interp_method.blockSignals(False)
+
+
+
+
+
+        # Read from device Calibration Matrix - from EEPROM
+        command_py = ":EEPROM:CONFigure:SPSBW?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        sbw_error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        sbw_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        sbw_read = read_data.value.decode("utf-8")[:error_read].strip()
+        print (f"SBW is -{sbw_read}-")
+        print (f"sbw_error_write is -{sbw_error_write}-")
+        print (f"sbw_error_read is -{sbw_error_read}-")
+        index_comboBox_sbw = int (sbw_read)
+        self.comboBox_sbw.blockSignals(True)
+        self.comboBox_hera_sbw.setCurrentIndex (index_comboBox_sbw)
+        self.comboBox_sbw.blockSignals(False)
 
         # Read from device Max Int. Time from EEPROM
-        # command_py = ":EEPROM:CONFigure:AUTO:MAXINT?\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # bytecount = 4096
-        # read_data = ctypes.create_string_buffer (bytecount)
-        # error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        # int_time_read = int (read_data.value.decode("utf-8")[:error_read])
-        # self.lineEdit_hera_max_int_time.setText (str(int_time_read))
+        command_py = ":EEPROM:CONFigure:AUTO:MAXINT?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        int_time_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_max_int_time.setText (str(int_time_read))
 
         # Read from device Freq from EEPROM
-        # command_py = ":EEPROM:CONFigure:AUTO:FREQ?\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # bytecount = 4096
-        # read_data = ctypes.create_string_buffer (bytecount)
-        # freq_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        # hera_freq_read = int (read_data.value.decode("utf-8")[:error_read])
-        # self.lineEdit_hera_freq.setText (f"{hera_freq_read}")
+        command_py = ":EEPROM:CONFigure:AUTO:FREQ?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        freq_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        hera_freq_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_freq.setText (f"{hera_freq_read}")
 
         # Read from device Adj min from EEPROM
-        # command_py = ":EEPROM:CONFigure:AUTO:ADJMIN?\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # bytecount = 4096
-        # read_data = ctypes.create_string_buffer (bytecount)
-        # error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        # adjmin_read = int (read_data.value.decode("utf-8")[:error_read])
-        # self.lineEdit_hera_adjmin.setText (str(adjmin_read))
+        command_py = ":EEPROM:CONFigure:AUTO:ADJMIN?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        adjmin_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_adjmin.setText (str(adjmin_read))
+
+
+        ######################
+        #  Read from EEPROM  #
+        ######################
+
+        # Read from device Autorange - EEPROM
+        command_py = ":EEPROM:CONFigure:AUTORANGE?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+
+        ar_read = read_data.value.decode("utf-8")[:error_read].strip()
+        
+        if (ar_read == "Closed") or (ar_read == "Opened"):
+            # Reread Autorange
+            print ("AUTORANGE: Closed/Opened received")
+            self.hera_reload_parameters()
+        elif (ar_read == ""):
+            print ("AUTORANGE: No reply received")
+            return
+        else:
+            print ("AUTORANGE: " + ar_read)
+            self.comboBox_hera_autorange_eeprom.blockSignals(True)
+            self.comboBox_hera_autorange_eeprom.setCurrentIndex (int(ar_read))
+            self.comboBox_hera_autorange_eeprom.blockSignals(False)
+
+        # Read from device Int. Time - from EEPROM
+        command_py = ":EEPROM:CONFigure:SPINT?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        int_time_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_int_time_eeprom.setText (str(int_time_read))
+      
+        # Read from device Average - from EEPROM
+        command_py = ":EEPROM:CONFigure:SPAVG?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        avg_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_avg_eeprom.setText (str(avg_read))
+
+        # Read from device Resolution - from EEPROM
+        command_py = ":EEPROM:CONFigure:RES?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        resolution_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.comboBox_hera_res_eeprom.blockSignals(True)
+        self.comboBox_hera_res_eeprom.setCurrentIndex (resolution_read)
+        self.comboBox_hera_res_eeprom.blockSignals(False)
+
+
+
+        # Read from device Interp Method - from EEPROM
+        command_py = ":EEPROM:CONFigure:INTERPOL?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        interpol_method_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.comboBox_hera_interp_method_eeprom.blockSignals(True)
+        self.comboBox_hera_interp_method_eeprom.setCurrentIndex (interpol_method_read)
+        self.comboBox_hera_interp_method_eeprom.blockSignals(False)
+
+
+        # Read from device Abs. Calibration Method - from EEPROM
+        command_py = ":EEPROM:CONFigure:USERABS?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        abs_calib_mode_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(True)
+        self.comboBox_hera_abs_cal_method_eeprom.setCurrentIndex (abs_calib_mode_read)
+        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(False)
+
+
+        # Read from device Std. Illuminant - from EEPROM
+        command_py = ":EEPROM:CONFigure:WHITE?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        white_read = read_data.value.decode("utf-8")[:error_read].strip()
+        # print (f"White is -{white_read}-")
+        index_comboBox_white = self.comboBox_hera_std_illuminant_eeprom.findText (white_read)
+        # print (f"Index combo is {index_comboBox_white}")
+        self.comboBox_hera_std_illuminant_eeprom.blockSignals(True)
+        self.comboBox_hera_std_illuminant_eeprom.setCurrentIndex (index_comboBox_white)
+        self.comboBox_hera_std_illuminant_eeprom.blockSignals(False)
         
 
 
@@ -1152,7 +1279,7 @@ class MainUI(QMainWindow):
         error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
         self.function_result_to_statusbar (command_py, error_write, " Startup values copied from EEPROM to internal memory!")
         # sleep (3)
-        # self.hera_reload_parameters()
+        self.hera_reload_parameters()
 
     def reboot_device (self):
         # Reboot device

@@ -292,7 +292,7 @@ def set_resolution_internal_mem():
     print("")
     while set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
         try:
-            set_resolution_to = float (input("Set Resolution (0.5/1/2/5/10) nm:"))
+            set_resolution_to = float (input("Set Resolution (0.5/1/2.5/5/10) nm:"))
             if set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
                 print("Please enter a valid option.")
         except ValueError:
@@ -438,7 +438,7 @@ def set_resolution_EEPROM():
     print("")
     while set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
         try:
-            set_resolution_to = float (input("Set Resolution (0.5/1/2/5/10) nm:"))
+            set_resolution_to = float (input("Set Resolution (0.5/1/2.5/5/10) nm:"))
             if set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
                 print("Please enter a valid option.")
         except ValueError:
