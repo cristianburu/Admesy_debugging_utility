@@ -27,7 +27,7 @@ class MainUI(QMainWindow):
         QtCore.QLocale.setDefault(en)
 
         # Load interface
-        loadUi ("interface_resize.ui", self)
+        loadUi ("interface.ui", self)
 
         # Focus change handler
         QApplication.instance().focusChanged.connect(self.handle_focus_changed)
@@ -65,7 +65,7 @@ class MainUI(QMainWindow):
         self.pushButton_connect.clicked.connect (self.toggle_connect_disconnect_pcm2x)
 
         # Reload Parameters Button
-        self.pushButton_reload_params.clicked.connect (self.reload_parameters)
+        self.pushButton_reload_params.clicked.connect (self.reload_parameters_for_colorimeter_on_click)
         
         # Auto-range parameters input
         self.lineEdit_ar_freq.setValidator (QtGui.QDoubleValidator (0.0, 250.0, 6, notation=QtGui.QDoubleValidator.StandardNotation))
@@ -99,8 +99,8 @@ class MainUI(QMainWindow):
         self.comboBox_shutter.currentIndexChanged.connect (self.colorimeter_write_shutter_state)
 
         # EEPROM READ/WRITE + REBOOT
-        self.pushButton_eeprom_write.clicked.connect (self.eeprom_write)
-        self.pushButton_eeprom_read.clicked.connect (self.eeprom_read)
+        self.pushButton_eeprom_write.clicked.connect (self.colorimeter_eeprom_write)
+        self.pushButton_eeprom_read.clicked.connect (self.colorimeter_eeprom_read)
         self.pushButton_reboot.clicked.connect (self.reboot_device)
         
         # Measure buttons
@@ -120,6 +120,17 @@ class MainUI(QMainWindow):
         ##############################
 
         self.pushButton_connect_hera.clicked.connect (self.toggle_connect_disconnect_hera)
+
+        # Reload Parameters Button
+        self.pushButton_hera_reload_params.clicked.connect (self.reload_parameters_for_hera_on_click)
+
+        # EEPROM READ/WRITE + REBOOT
+        self.pushButton_hera_eeprom_write.clicked.connect (self.hera_eeprom_write)
+        self.pushButton_hera_eeprom_read.clicked.connect (self.hera_eeprom_read)
+
+        # Measure buttons
+        self.pushButton_hera_measure_spectrum.clicked.connect (self.hera_measure_spectrum)
+        
 
 
     def handle_focus_changed(self, old_widget, now_widget):
@@ -454,7 +465,7 @@ class MainUI(QMainWindow):
         self.lineEdit_colorimeter.setText (colorimeter_type + "  SN:" + sn_read + "  FW:" + fw_vers_read)
 
         # Load parameters
-        self.eeprom_read()
+        self.colorimeter_eeprom_read()
 
     def hera_connect (self):
         # Initialization
@@ -616,8 +627,12 @@ class MainUI(QMainWindow):
             self.statusbar.showMessage ("Error closing device! Reboot probe and restart application!")
         
 
-    def reload_parameters(self):
+    def reload_parameters_for_colorimeter_on_click(self):
         self.colorimeter_reload_parameters()
+        self.statusbar.showMessage (f"Parameters reloaded successfully at {ctime()[11:20]}",10000)
+
+    def reload_parameters_for_hera_on_click(self):
+        self.hera_reload_parameters()
         self.statusbar.showMessage (f"Parameters reloaded successfully at {ctime()[11:20]}",10000)
 
     def colorimeter_reload_parameters (self):
@@ -806,7 +821,7 @@ class MainUI(QMainWindow):
         self.comboBox_shutter.blockSignals(False)
 
     def hera_reload_parameters (self):
-        print ("Hera_reload_parameters launched!")
+        # print ("Hera_reload_parameters launched!")
 
         # Read from device Autorange - internal memory
         command_py = ":SENSe:SP:AUTORANGE?\n"
@@ -831,7 +846,6 @@ class MainUI(QMainWindow):
             self.comboBox_hera_autorange.blockSignals(True)
             self.comboBox_hera_autorange.setCurrentIndex (int(ar_read))
             self.comboBox_hera_autorange.blockSignals(False)
-
 
         # Read from device Int. Time - Internal Memory
         command_py = ":SENSe:INT?\n"
@@ -868,61 +882,6 @@ class MainUI(QMainWindow):
         self.comboBox_hera_interp_method.blockSignals(True)
         self.comboBox_hera_interp_method.setCurrentIndex (interpol_method_read)
         self.comboBox_hera_interp_method.blockSignals(False)
-
-
-
-
-
-        # Read from device Calibration Matrix - from EEPROM
-        command_py = ":EEPROM:CONFigure:SPSBW?\n"
-        buffer_length = len (command_py)
-        timeout_ms = 5000
-        sbw_error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
-        read_data = ctypes.create_string_buffer (bytecount)
-        sbw_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        sbw_read = read_data.value.decode("utf-8")[:error_read].strip()
-        print (f"SBW is -{sbw_read}-")
-        print (f"sbw_error_write is -{sbw_error_write}-")
-        print (f"sbw_error_read is -{sbw_error_read}-")
-        index_comboBox_sbw = int (sbw_read)
-        self.comboBox_sbw.blockSignals(True)
-        self.comboBox_hera_sbw.setCurrentIndex (index_comboBox_sbw)
-        self.comboBox_sbw.blockSignals(False)
-
-        # Read from device Max Int. Time from EEPROM
-        command_py = ":EEPROM:CONFigure:AUTO:MAXINT?\n"
-        buffer_length = len (command_py)
-        timeout_ms = 5000
-        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
-        read_data = ctypes.create_string_buffer (bytecount)
-        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        int_time_read = int (read_data.value.decode("utf-8")[:error_read])
-        self.lineEdit_hera_max_int_time.setText (str(int_time_read))
-
-        # Read from device Freq from EEPROM
-        command_py = ":EEPROM:CONFigure:AUTO:FREQ?\n"
-        buffer_length = len (command_py)
-        timeout_ms = 5000
-        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
-        read_data = ctypes.create_string_buffer (bytecount)
-        freq_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        hera_freq_read = int (read_data.value.decode("utf-8")[:error_read])
-        self.lineEdit_hera_freq.setText (f"{hera_freq_read}")
-
-        # Read from device Adj min from EEPROM
-        command_py = ":EEPROM:CONFigure:AUTO:ADJMIN?\n"
-        buffer_length = len (command_py)
-        timeout_ms = 5000
-        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
-        read_data = ctypes.create_string_buffer (bytecount)
-        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        adjmin_read = int (read_data.value.decode("utf-8")[:error_read])
-        self.lineEdit_hera_adjmin.setText (str(adjmin_read))
-
 
         ######################
         #  Read from EEPROM  #
@@ -974,6 +933,39 @@ class MainUI(QMainWindow):
         avg_read = int (read_data.value.decode("utf-8")[:error_read])
         self.lineEdit_hera_avg_eeprom.setText (str(avg_read))
 
+        # Read from device Adj min from EEPROM
+        command_py = ":EEPROM:CONFigure:AUTO:ADJMIN?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        adjmin_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_adjmin.setText (str(adjmin_read))
+
+        # Read from device Freq from EEPROM
+        command_py = ":EEPROM:CONFigure:AUTO:FREQ?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        freq_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        hera_freq_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_freq.setText (f"{hera_freq_read}")
+
+        # Read from device Max Int. Time from EEPROM
+        command_py = ":EEPROM:CONFigure:AUTO:MAXINT?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        int_time_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.lineEdit_hera_max_int_time.setText (str(int_time_read))
+
         # Read from device Resolution - from EEPROM
         command_py = ":EEPROM:CONFigure:RES?\n"
         buffer_length = len (command_py)
@@ -987,8 +979,6 @@ class MainUI(QMainWindow):
         self.comboBox_hera_res_eeprom.setCurrentIndex (resolution_read)
         self.comboBox_hera_res_eeprom.blockSignals(False)
 
-
-
         # Read from device Interp Method - from EEPROM
         command_py = ":EEPROM:CONFigure:INTERPOL?\n"
         buffer_length = len (command_py)
@@ -1001,21 +991,6 @@ class MainUI(QMainWindow):
         self.comboBox_hera_interp_method_eeprom.blockSignals(True)
         self.comboBox_hera_interp_method_eeprom.setCurrentIndex (interpol_method_read)
         self.comboBox_hera_interp_method_eeprom.blockSignals(False)
-
-
-        # Read from device Abs. Calibration Method - from EEPROM
-        command_py = ":EEPROM:CONFigure:USERABS?\n"
-        buffer_length = len (command_py)
-        timeout_ms = 5000
-        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
-        read_data = ctypes.create_string_buffer (bytecount)
-        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        abs_calib_mode_read = int (read_data.value.decode("utf-8")[:error_read])
-        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(True)
-        self.comboBox_hera_abs_cal_method_eeprom.setCurrentIndex (abs_calib_mode_read)
-        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(False)
-
 
         # Read from device Std. Illuminant - from EEPROM
         command_py = ":EEPROM:CONFigure:WHITE?\n"
@@ -1032,6 +1007,36 @@ class MainUI(QMainWindow):
         self.comboBox_hera_std_illuminant_eeprom.blockSignals(True)
         self.comboBox_hera_std_illuminant_eeprom.setCurrentIndex (index_comboBox_white)
         self.comboBox_hera_std_illuminant_eeprom.blockSignals(False)
+
+        # Read from device Abs. Calibration Method - from EEPROM
+        command_py = ":EEPROM:CONFigure:USERABS?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        abs_calib_mode_read = int (read_data.value.decode("utf-8")[:error_read])
+        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(True)
+        self.comboBox_hera_abs_cal_method_eeprom.setCurrentIndex (abs_calib_mode_read)
+        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(False)
+
+        # Read from device Calibration Matrix - from EEPROM
+        command_py = ":EEPROM:CONFigure:SPSBW?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        sbw_error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        sbw_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        sbw_read = read_data.value.decode("utf-8")[:error_read].strip()
+        print (f"SBW is -{sbw_read}-")
+        print (f"sbw_error_write is -{sbw_error_write}-")
+        print (f"sbw_error_read is -{sbw_error_read}-")
+        index_comboBox_sbw = int (sbw_read)
+        self.comboBox_sbw.blockSignals(True)
+        self.comboBox_hera_sbw.setCurrentIndex (index_comboBox_sbw)
+        self.comboBox_sbw.blockSignals(False)
         
 
 
@@ -1251,7 +1256,7 @@ class MainUI(QMainWindow):
         self.function_result_to_statusbar (command_py, error_write, autorange_report_on_shutter)
         self.colorimeter_reload_parameters()
 
-    def eeprom_write (self):
+    def colorimeter_eeprom_write (self):
         # :EEPROM:STARTUP:WRITE 
         command_py = ":EEPROM:STARTUP:WRITE\n"
         buffer_length = len (command_py)
@@ -1261,7 +1266,17 @@ class MainUI(QMainWindow):
         sleep (1)
         self.colorimeter_reload_parameters()
 
-    def eeprom_read (self):
+    def hera_eeprom_write (self):
+        # :EEPROM:STARTUP:WRITE 
+        command_py = ":EEPROM:STARTUP:WRITE\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, " Startup values updated!")
+        sleep (1)
+        self.hera_reload_parameters()
+
+    def colorimeter_eeprom_read (self):
         # :EEPROM:STARTUP:READ 
         command_py = ":EEPROM:STARTUP:READ\n"
         buffer_length = len (command_py)
@@ -1438,6 +1453,21 @@ class MainUI(QMainWindow):
         if not who_is_calling == "from_measure_all":
             self.function_result_to_statusbar (command_py, error_write, "")
             self.colorimeter_reload_parameters()
+
+    def hera_measure_spectrum (self):
+        # Measure Hera spectrum
+        command_py = ":measure:LEDchar 0\n"
+        buffer_length = len (command_py)
+        timeout_ms = 10000
+        error_write_spectrum = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read_spectrum = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        measure_spectrum_result = read_data.value.decode("utf-8")[:error_read_spectrum]
+        print (f"error_write_spectrum is {error_write_spectrum}")
+        print (f"error_read_spectrum is {error_read_spectrum}")
+        print (f"Measure SPECTRUM result is -{measure_spectrum_result}-")
+
 
 if __name__ == "__main__":
     
