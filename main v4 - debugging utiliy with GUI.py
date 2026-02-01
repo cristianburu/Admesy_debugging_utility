@@ -15,6 +15,8 @@ import sys
 import ctypes
 
 from time import ctime, sleep
+import numpy
+import base64
 
 
 
@@ -36,7 +38,7 @@ class MainUI(QMainWindow):
         font = QtGui.QFont()
         font.setFamily("Arial Narrow")
         self.pushButton_connect = QtWidgets.QPushButton(self.tab_pcm2x)
-        self.pushButton_connect.setGeometry(QtCore.QRect(26, 13, 121, 19))
+        self.pushButton_connect.setGeometry(QtCore.QRect(58, 13, 77, 19))
         self.pushButton_connect.setFont(font)
         self.pushButton_connect.setObjectName("pushButton_connect")
         self.pushButton_connect.setText(QtCore.QCoreApplication.translate("MainWindow", "CONNECT"))
@@ -47,7 +49,7 @@ class MainUI(QMainWindow):
         font = QtGui.QFont()
         font.setFamily("Arial Narrow")
         self.pushButton_connect_hera = QtWidgets.QPushButton(self.tab_hera)
-        self.pushButton_connect_hera.setGeometry(QtCore.QRect(30, 13, 121, 19))
+        self.pushButton_connect_hera.setGeometry(QtCore.QRect(58, 13, 77, 19))
         self.pushButton_connect_hera.setFont(font)
         self.pushButton_connect_hera.setObjectName("pushButton_connect")
         self.pushButton_connect_hera.setText(QtCore.QCoreApplication.translate("MainWindow", "CONNECT"))
@@ -116,7 +118,7 @@ class MainUI(QMainWindow):
 
 
         ##############################
-        #     TAB 2 Signals/Slots    #
+        #     TAB HERA Signals/Slots    #
         ##############################
 
         self.pushButton_connect_hera.clicked.connect (self.toggle_connect_disconnect_hera)
@@ -130,6 +132,7 @@ class MainUI(QMainWindow):
 
         # Measure buttons
         self.pushButton_hera_measure_spectrum.clicked.connect (self.hera_measure_spectrum)
+        self.pushButton_hera_get_wavelengths.clicked.connect (self.hera_get_wavelengths)
         
 
 
@@ -1456,18 +1459,54 @@ class MainUI(QMainWindow):
 
     def hera_measure_spectrum (self):
         # Measure Hera spectrum
-        command_py = ":measure:LEDchar 0\n"
+        command_py = ":MEASure:SPECtrum\n"
         buffer_length = len (command_py)
-        timeout_ms = 10000
+        timeout_ms = 30000
         error_write_spectrum = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
+        bytecount = 8192
         read_data = ctypes.create_string_buffer (bytecount)
+        
         error_read_spectrum = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        measure_spectrum_result = read_data.value.decode("utf-8")[:error_read_spectrum]
+        
         print (f"error_write_spectrum is {error_write_spectrum}")
         print (f"error_read_spectrum is {error_read_spectrum}")
-        print (f"Measure SPECTRUM result is -{measure_spectrum_result}-")
+         
+        spectrum = numpy.frombuffer (read_data, dtype='>f', count=int (error_read_spectrum/4)) # >f = big-endian (MSB first)
+        numpy.set_printoptions(suppress=True)
+        print (spectrum[0:])
+        print (type(spectrum))
+        print("Shape:", spectrum.shape)  
+        print("Dimensions:", spectrum.ndim)  
+        print("Size:", spectrum.size) 
+        print("Data type:", spectrum.dtype)  
+        print("Item size:", spectrum.itemsize)
+        numpy.savetxt("foo.csv", spectrum, delimiter=",")
 
+    def hera_get_wavelengths (self):
+        # Measure Hera spectrum
+        command_py = ":GET:WAVElengths\n"
+        buffer_length = len (command_py)
+        timeout_ms = 30000
+        error_write_get_wavelengths = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 8192
+        read_data = ctypes.create_string_buffer (bytecount)
+        
+        error_read_get_wavelengths = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+              
+        print (f"error_write_get_wavelengths is {error_write_get_wavelengths}")
+        print (f"error_read_get_wavelengths is {error_read_get_wavelengths}")
+
+        # get_wavelengths_result = read_data.value.decode("utf-8")[:error_read_get_wavelengths].strip()
+        # print (f":GET:WAVElengths result is -{get_wavelengths_result}-")
+   
+        wl = numpy.frombuffer (read_data, dtype='>f', count=int (error_read_get_wavelengths/4)) # >f = big-endian (MSB first)
+        print (wl[0:])
+        print (type(wl))
+        print("Shape:", wl.shape)  
+        print("Dimensions:", wl.ndim)  
+        print("Size:", wl.size) 
+        print("Data type:", wl.dtype)  
+        print("Item size:", wl.itemsize)
 
 if __name__ == "__main__":
     

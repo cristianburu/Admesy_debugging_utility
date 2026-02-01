@@ -6,7 +6,7 @@
       Simultaneous operation of Hera and PCM2X
       Revamped interface
       More robust error handling
-      
+      Various fixes
 
 
 
@@ -23,6 +23,11 @@ resize interface
 indexerror two_Values
 
 coduri Hera 0x....
+                * 0x23CF::0x1020	: Hera01
+                 * 0x23CF::0x1021	: Hera02
+				 * 0x23CF::0x1022	: Hera03
+                 * 0x23CF::0x1023	: Hera04
+
 
 functia status de organizat textele
 
@@ -32,6 +37,8 @@ functia status de organizat textele
 
 INSTRUCTIONS
 ===============
+
+Supported devices
 
 reload param why is good
 
