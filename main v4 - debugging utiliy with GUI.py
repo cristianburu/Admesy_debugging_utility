@@ -17,6 +17,7 @@ import ctypes
 from time import ctime, sleep
 from numpy import frombuffer, set_printoptions, savetxt
 import numpy
+import time
 
 
 
@@ -132,12 +133,79 @@ class MainUI(QMainWindow):
         self.pushButton_hera_eeprom_write.clicked.connect (self.hera_eeprom_write)
         self.pushButton_hera_eeprom_read.clicked.connect (self.hera_eeprom_read)
 
+        # Core parameters
+
+        
+        self.comboBox_hera_autorange.currentIndexChanged.connect (self.hera_write_autorange_memory)
+        
+
+        self.lineEdit_hera_int_time.setValidator (QtGui.QIntValidator(2500,20000000, self))
+        self.lineEdit_hera_int_time.editingFinished.connect (self.hera_write_int_time_memory)
+
+        self.lineEdit_hera_avg.setValidator (QtGui.QIntValidator(1,200, self))
+        self.lineEdit_hera_avg.editingFinished.connect (self.hera_write_avg_memory)
+
+        self.lineEdit_hera_adjmin_2.setValidator (QtGui.QIntValidator(1,100, self))
+        self.lineEdit_hera_adjmin_2.editingFinished.connect (self.hera_write_adjmin_eeprom_2)
+
+        self.lineEdit_hera_freq_2.setValidator (QtGui.QIntValidator(1,255, self))
+        self.lineEdit_hera_freq_2.editingFinished.connect (self.hera_write_freq_eeprom_2)
+
+        # Other parameters
+        self.comboBox_hera_interp_method.currentIndexChanged.connect (self.hera_write_interp_method_memory)
+        self.comboBox_hera_res_write_only.currentIndexChanged.connect (self.hera_write_res_memory)
+
+
+        
+        
+
+        # EEPROM Parameters
+
+        
+        self.comboBox_hera_autorange_eeprom.currentIndexChanged.connect (self.hera_write_autorange_eeprom)
+
+        self.comboBox_hera_interp_method_eeprom.currentIndexChanged.connect (self.hera_write_interp_method_eeprom)
+
+
+        
+        
+
+        self.lineEdit_hera_int_time_eeprom.setValidator (QtGui.QIntValidator(1000,500000, self))
+        self.lineEdit_hera_int_time_eeprom.editingFinished.connect (self.hera_write_int_time_eeprom)
+
+        self.lineEdit_hera_avg_eeprom.setValidator (QtGui.QIntValidator(1,200, self))
+        self.lineEdit_hera_avg_eeprom.editingFinished.connect (self.hera_write_avg_eeprom)
+        
+
+        self.lineEdit_hera_adjmin.setValidator (QtGui.QIntValidator(1,100, self))
+        self.lineEdit_hera_adjmin.editingFinished.connect (self.hera_write_adjmin_eeprom)
+
+        self.lineEdit_hera_freq.setValidator (QtGui.QIntValidator(1,255, self))
+        self.lineEdit_hera_freq.editingFinished.connect (self.hera_write_freq_eeprom)
+
+        
+        self.lineEdit_hera_max_int_time.setValidator (QtGui.QIntValidator(2500,20000000, self))
+        self.lineEdit_hera_max_int_time.editingFinished.connect (self.hera_write_max_int_time_eeprom)
+
+
+        self.comboBox_hera_res_eeprom.currentIndexChanged.connect (self.hera_write_res_eeprom)
+        self.comboBox_hera_abs_cal_method_eeprom.currentIndexChanged.connect (self.hera_write_userabs_eeprom)
+
+        self.comboBox_hera_sbw.currentIndexChanged.connect (self.hera_write_sbw_eeprom)
+
+        self.comboBox_hera_std_illuminant_eeprom.currentIndexChanged.connect (self.hera_write_std_illuminant_eeprom)
+
+
+        
+        
+
         # Measure buttons
         self.pushButton_hera_measure_spectrum.clicked.connect (self.hera_measure_spectrum)
         self.pushButton_hera_get_wavelengths.clicked.connect (self.hera_get_wavelengths)
         self.pushButton_hera_measure_Yxy.clicked.connect (self.hera_measure_Yxy)
         self.pushButton_hera_measure_XYZ.clicked.connect (self.hera_measure_XYZ)
  
+
     def handle_focus_changed(self, old_widget, now_widget):
         if self.lineEdit_ar_freq is old_widget:
             try:
@@ -222,6 +290,85 @@ class MainUI(QMainWindow):
             except ValueError:
                 self.colorimeter_reload_parameters()
                 return
+            
+        ###############
+        #  HERA TAB   #
+        ###############
+        
+        if self.lineEdit_hera_int_time is old_widget:
+            try:
+                int_time = int (self.lineEdit_hera_int_time.text())
+                if (int_time > 20000000) or (int_time < 2500):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_int_time_eeprom is old_widget:
+            try:
+                int_time = int (self.lineEdit_hera_int_time_eeprom.text())
+                if (int_time > 20000000) or (int_time < 2500):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_avg is old_widget:
+            try:
+                avg = int (self.lineEdit_hera_avg.text())
+                if (avg > 200) or (avg < 1):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_avg_eeprom is old_widget:
+            try:
+                avg = int (self.lineEdit_hera_avg_eeprom.text())
+                if (avg > 200) or (avg < 1):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_adjmin_2 is old_widget:
+            try:
+                adjmin = int (self.lineEdit_hera_adjmin_2.text())
+                if (adjmin > 100) or (adjmin < 1):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_adjmin is old_widget:
+            try:
+                adjmin = int (self.lineEdit_hera_adjmin.text())
+                if (adjmin > 100) or (adjmin < 1):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_freq_2 is old_widget:
+            try:
+                freq = int (self.lineEdit_hera_freq_2.text())
+                if (freq > 255) or (freq < 1):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_freq is old_widget:
+            try:
+                freq = int (self.lineEdit_hera_freq.text())
+                if (freq > 255) or (freq < 1):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+        if self.lineEdit_hera_max_int_time is old_widget:
+            try:
+                max_int_time = int (self.lineEdit_hera_max_int_time.text())
+                if (max_int_time > 20000000) or (max_int_time < 2500):
+                    self.hera_reload_parameters()
+            except ValueError:
+                self.hera_reload_parameters()
+
+    
+
 
     def disable_interface_pcm2x (self):
         # Clear lineedits
@@ -278,7 +425,7 @@ class MainUI(QMainWindow):
         # Clear comboboxes
         self.comboBox_autorange.blockSignals(True)
         self.comboBox_autorange.setCurrentIndex(-1)
-        self.comboBox_autorange.blockSignals(True)
+        self.comboBox_autorange.blockSignals(False)
 
         self.comboBox_gain.blockSignals(True)
         self.comboBox_gain.setCurrentIndex(-1)
@@ -325,6 +472,10 @@ class MainUI(QMainWindow):
         self.lineEdit_hera_freq.clear()
         self.lineEdit_hera_max_int_time.clear()
 
+        # Clear labels
+        self.label_meas_time_XYZ.clear()
+        self.label_meas_time_Yxy.clear()
+
         # Disable groups of widgets
         self.widget_hera_00_reload_params.setEnabled (False)
         self.widget_hera_01_connection.setEnabled (False)
@@ -338,43 +489,43 @@ class MainUI(QMainWindow):
         # Clear comboboxes
         self.comboBox_hera_autorange.blockSignals(True)
         self.comboBox_hera_autorange.setCurrentIndex(-1)
-        self.comboBox_hera_autorange.blockSignals(True)
+        self.comboBox_hera_autorange.blockSignals(False)
 
         self.comboBox_hera_interp_method.blockSignals(True)
         self.comboBox_hera_interp_method.setCurrentIndex(-1)
-        self.comboBox_hera_interp_method.blockSignals(True)
+        self.comboBox_hera_interp_method.blockSignals(False)
 
         self.comboBox_hera_autorange_eeprom.blockSignals(True)
         self.comboBox_hera_autorange_eeprom.setCurrentIndex(-1)
-        self.comboBox_hera_autorange_eeprom.blockSignals(True)
+        self.comboBox_hera_autorange_eeprom.blockSignals(False)
 
         self.comboBox_hera_res_eeprom.blockSignals(True)
         self.comboBox_hera_res_eeprom.setCurrentIndex(-1)
-        self.comboBox_hera_res_eeprom.blockSignals(True)
+        self.comboBox_hera_res_eeprom.blockSignals(False)
 
         self.comboBox_hera_interp_method_eeprom.blockSignals(True)
         self.comboBox_hera_interp_method_eeprom.setCurrentIndex(-1)
-        self.comboBox_hera_interp_method_eeprom.blockSignals(True)
+        self.comboBox_hera_interp_method_eeprom.blockSignals(False)
 
         self.comboBox_hera_std_illuminant_eeprom.blockSignals(True)
         self.comboBox_hera_std_illuminant_eeprom.setCurrentIndex(-1)
-        self.comboBox_hera_std_illuminant_eeprom.blockSignals(True)
+        self.comboBox_hera_std_illuminant_eeprom.blockSignals(False)
 
         self.comboBox_hera_abs_cal_method_eeprom.blockSignals(True)
         self.comboBox_hera_abs_cal_method_eeprom.setCurrentIndex(-1)
-        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(True)
+        self.comboBox_hera_abs_cal_method_eeprom.blockSignals(False)
 
         self.comboBox_hera_sbw.blockSignals(True)
         self.comboBox_hera_sbw.setCurrentIndex(-1)
-        self.comboBox_hera_sbw.blockSignals(True)
+        self.comboBox_hera_sbw.blockSignals(False)
 
         self.comboBox_hera_sbw_write_only.blockSignals(True)
         self.comboBox_hera_sbw_write_only.setCurrentIndex(-1)
-        self.comboBox_hera_sbw_write_only.blockSignals(True)
+        self.comboBox_hera_sbw_write_only.blockSignals(False)
 
-        self.comboBox_hera_res_write_only.blockSignals(True)
-        self.comboBox_hera_res_write_only.setCurrentIndex(-1)
-        self.comboBox_hera_res_write_only.blockSignals(True)
+        # self.comboBox_hera_res_write_only.blockSignals(True)
+        # self.comboBox_hera_res_write_only.setCurrentIndex(-1)
+        # self.comboBox_hera_res_write_only.blockSignals(False)
     
     def enable_interface_pcm2x (self):
         # Enable groups of widgets
@@ -1093,7 +1244,7 @@ class MainUI(QMainWindow):
         read_data = ctypes.create_string_buffer (bytecount)
         error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
         white_read = read_data.value.decode("utf-8")[:error_read].strip()
-        # print (f"White is -{white_read}-")
+        print (f"White is -{white_read}-")
         index_comboBox_white = self.comboBox_hera_std_illuminant_eeprom.findText (white_read)
         # print (f"Index combo is {index_comboBox_white}")
         self.comboBox_hera_std_illuminant_eeprom.blockSignals(True)
@@ -1121,14 +1272,14 @@ class MainUI(QMainWindow):
         bytecount = 4096
         read_data = ctypes.create_string_buffer (bytecount)
         sbw_error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        sbw_read = read_data.value.decode("utf-8")[:error_read].strip()
+        sbw_read = read_data.value.decode("utf-8")[:sbw_error_read].strip()
         print (f"SBW is -{sbw_read}-")
         print (f"sbw_error_write is -{sbw_error_write}-")
         print (f"sbw_error_read is -{sbw_error_read}-")
         index_comboBox_sbw = int (sbw_read)
-        self.comboBox_sbw.blockSignals(True)
+        self.comboBox_hera_sbw.blockSignals(True)
         self.comboBox_hera_sbw.setCurrentIndex (index_comboBox_sbw)
-        self.comboBox_sbw.blockSignals(False)
+        self.comboBox_hera_sbw.blockSignals(False)
   
     def function_result_to_statusbar (self, command_sent, error_received, extra_string):
         if not (error_received < 0):
@@ -1144,8 +1295,10 @@ class MainUI(QMainWindow):
                 self.statusbar.showMessage ("No NI-VISA devices found!")
             elif error_received == -24:
                 self.statusbar.showMessage ("LibUSB device to open not found!")
+            elif error_received == -1073807339:
+                self.statusbar.showMessage (f"NI-VISA Timeout! Error code: {error_received} on " + command_sent + " Physically reboot probe and restart application!")
             elif error_received < -24:
-                self.statusbar.showMessage (f"NI-VISA Interface specific error code: {error_received}" + command_sent)
+                self.statusbar.showMessage (f"NI-VISA Interface specific error code: {error_received} on " + command_sent + " Physically reboot probe and restart application!")
             else:
                 self.statusbar.showMessage ("LIBUSB Interface specific Error code." + f"Error code: {error_received}")
 
@@ -1256,6 +1409,263 @@ class MainUI(QMainWindow):
         error_write = py_usbtmc_write(ptr_handle_colorimeter, command_py.encode('ASCII'), buffer_length, timeout_ms)
         self.function_result_to_statusbar (command_py, error_write, "")
         self.colorimeter_reload_parameters()
+
+    def hera_write_freq_eeprom (self):
+        print ("Freq working!")
+        # Write to device freq - EEPROM
+        if (not self.lineEdit_hera_freq.isModified()):
+            return
+        self.lineEdit_hera_freq.setModified(False)
+        command_py = ":EEPROM:CONFigure:AUTO:FREQ " + self.lineEdit_hera_freq.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_freq_eeprom_2 (self):
+        print ("Freq 2 working!")
+        # Write to device freq - EEPROM
+        if (not self.lineEdit_hera_freq_2.isModified()):
+            return
+        self.lineEdit_hera_freq_2.setModified(False)
+        command_py = ":EEPROM:CONFigure:AUTO:FREQ " + self.lineEdit_hera_freq_2.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+    
+    def hera_write_avg_eeprom (self):
+        print ("Avg EEPROM working!")
+        # Write to device avg - EEPROM
+        if (not self.lineEdit_hera_avg_eeprom.isModified()):
+            return
+        self.lineEdit_hera_avg_eeprom.setModified(False)
+        command_py = ":EEPROM:CONFigure:SPAVG " + self.lineEdit_hera_avg_eeprom.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_autorange_memory (self):
+        # Write to device autorange - Internal memory
+        ar_value = self.comboBox_hera_autorange.currentIndex()
+        # Catch if we put a placeholder on autorange combobox
+        if ar_value < 0:
+            return
+        command_py = ":SENSe:SP:AUTORANGE " + str (ar_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_autorange_eeprom (self):
+        # Write to device autorange - EEPROM
+        ar_value = self.comboBox_hera_autorange_eeprom.currentIndex()
+        # Catch if we put a placeholder on autorange combobox
+        if ar_value < 0:
+            return
+        command_py = ":EEPROM:CONFigure:AUTORANGE " + str (ar_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+        
+    def hera_write_userabs_eeprom (self):
+        # Write to device abolute calibration mode - EEPROM
+        userabs_value = self.comboBox_hera_abs_cal_method_eeprom.currentIndex()
+        command_py = ":EEPROM:CONFigure:USERABS " + str (userabs_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_res_eeprom (self):
+        # Write to device resolution - EEPROM
+        res_value = self.comboBox_hera_res_eeprom.currentIndex()
+        command_py = ":EEPROM:CONFigure:RES " + str (res_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_res_memory (self):
+        # Write to device resolution - Internal Memory
+        res_value = self.comboBox_hera_res_write_only.currentIndex()
+        command_py = ":SENSe:RES " + str (res_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        print ("#######################################")
+        print ("Executed resolution write-only to memory")
+        print ("#######################################")
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_avg_memory (self):
+        print ("Avg memory working!")
+        # Write to device avg - Internal memory
+        if (not self.lineEdit_hera_avg.isModified()):
+            return
+        self.lineEdit_hera_avg.setModified(False)
+        command_py = ":SENSe:SP:AVERAGE " + self.lineEdit_hera_avg.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+
+    def hera_write_int_time_eeprom (self):
+        print ("Int. time EEPROM working!")
+        # Write to device int time - EEPROM
+        if (not self.lineEdit_hera_int_time_eeprom.isModified()):
+            return
+        self.lineEdit_hera_int_time_eeprom.setModified(False)
+        command_py = ":EEPROM:CONFigure:SPINT " + self.lineEdit_hera_int_time_eeprom.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_int_time_memory (self):
+        print ("Int. time Internal memory working!")
+        # Write to device int time - memory
+        if (not self.lineEdit_hera_int_time.isModified()):
+            return
+        self.lineEdit_hera_int_time.setModified(False)
+        command_py = ":SENSe:INT " + self.lineEdit_hera_int_time.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_max_int_time_eeprom (self):
+        print ("Max. Int. time EEPROM working!")
+        # Write to device max int time - EEPROM
+        if (not self.lineEdit_hera_max_int_time.isModified()):
+            return
+        self.lineEdit_hera_max_int_time.setModified(False)
+
+        # Check minimum value allowed for Max. Int. Time
+        minimum_max_int_time = int (1000000 / int (self.lineEdit_hera_freq.text()))
+        if int (self.lineEdit_hera_max_int_time.text()) < minimum_max_int_time:
+            self.statusbar.showMessage (f"Minimum value for Max. Int. Time is {minimum_max_int_time} μs at {int (self.lineEdit_hera_freq.text())} Hz",10000)
+            self.colorimeter_reload_parameters()
+            return
+
+
+        command_py = ":EEPROM:CONFigure:AUTO:MAXINT " + self.lineEdit_hera_max_int_time.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+
+    def hera_write_adjmin_eeprom (self):
+        print ("Adj min working!")
+        # Write to device adjmin - EEPROM
+        if (not self.lineEdit_hera_adjmin.isModified()):
+            return
+        self.lineEdit_hera_adjmin.setModified(False)
+        command_py = ":EEPROM:CONFigure:AUTO:ADJMIN " + self.lineEdit_hera_adjmin.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+   
+    def hera_write_adjmin_eeprom_2 (self):
+        print ("Adj min working!")
+        # Write to device adjmin - EEPROM
+        if (not self.lineEdit_hera_adjmin_2.isModified()):
+            return
+        self.lineEdit_hera_adjmin_2.setModified(False)
+        command_py = ":EEPROM:CONFigure:AUTO:ADJMIN " + self.lineEdit_hera_adjmin_2.text() + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+    
+    def hera_write_sbw_eeprom (self):
+        # Write to device calibration matrix (sbw) - eeprom
+        sbw_string = self.comboBox_hera_sbw.currentText()
+        if sbw_string == "off":
+            command_py = ":EEPROM:CONFigure:SPSBW 0\n"
+        else:
+            command_py = ":EEPROM:CONFigure:SPSBW 1\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        print ("#################")
+        print (f"I am working sbw_string is {sbw_string}")
+        print ("#################")
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+        # def hera_write_sbw_eeprom (self):
+        # # Write to device calibration matrix (sbw) - eeprom
+        # sbw_string = self.comboBox_hera_sbw.currentText()
+        # command_py = ":EEPROM:CONFigure:SPSBW " + sbw_string + "\n"
+        # buffer_length = len (command_py)
+        # timeout_ms = 5000
+        # print ("#################")
+        # print ("I am working")
+        # print ("#################")
+        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        # self.function_result_to_statusbar (command_py, error_write, "")
+        # self.hera_reload_parameters()
+
+
+    def hera_write_std_illuminant_eeprom (self):
+        # Write to device std illuminant - EEPROM
+        std_illuminant_string = "{:>4}".format(self.comboBox_hera_std_illuminant_eeprom.currentText())
+        command_py = ":EEPROM:CONFigure:WHITE " + std_illuminant_string + "\n"
+        # command_py = ":EEPROM:CONFigure:WHITE FL5\n"
+        print (command_py)
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+
+
+
+
+    def hera_write_interp_method_eeprom (self):
+        # Write to device interp method - EEPROM
+        interp_method_value = self.comboBox_hera_interp_method_eeprom.currentIndex()
+        command_py = ":EEPROM:CONFigure:INTERPOL " + str(interp_method_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
+    def hera_write_interp_method_memory (self):
+        # Write to device interp method - Internal Memory
+        interp_method_value = self.comboBox_hera_interp_method.currentIndex()
+        command_py = ":SENSe:INTERPOL " + str(interp_method_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        print ("#######################################")
+        print ("Executed interp method to memory")
+        print ("#######################################")
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
 
     def colorimeter_write_automode (self):
         # Write to device automode
@@ -1517,69 +1927,138 @@ class MainUI(QMainWindow):
 
     def hera_measure_Yxy (self):
         # Measure Yxy - HERA
+        
+        self.clean_measure_Yxy_interface()
+        self.label_meas_time_Yxy.setText("Measuring...")
+        self.label_meas_time_Yxy.repaint()
+        
         command_py = ":MEASure:Yxy\n"
         buffer_length = len (command_py)
-        timeout_ms = 5000
+        timeout_ms = 30000
+        tic = time.perf_counter()
         error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
-        read_data = ctypes.create_string_buffer (bytecount)
-        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        measure_all_result = read_data.value.decode("utf-8")[:error_read].strip()
-        print (f":MEASure:Yxy result is -{measure_all_result}-")
+        if not (error_write < 0):
+            bytecount = 4096
+            read_data = ctypes.create_string_buffer (bytecount)
+            error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+            print (f"measure Yxy error read is {error_read}")
+            toc = time.perf_counter()
+            if not (error_read < 0):
+                measure_all_result = read_data.value.decode("utf-8")[:error_read].strip()
+                print (f":MEASure:Yxy result is -{measure_all_result}-")
 
-
-        self.lineEdit_hera_measure_Yxy_Y.setText(str(float (measure_all_result.split(",")[0])))
-        self.lineEdit_hera_measure_Yxy_x.setText(str(float (measure_all_result.split(",")[1])))
-        self.lineEdit_hera_measure_Yxy_y.setText(str(float (measure_all_result.split(",")[2])))
-        
-        if int (measure_all_result.split(",")[3]):
-            self.lineEdit_hera_measure_Yxy_clip.setText("Yes!!!")
-            self.lineEdit_hera_measure_Yxy_clip.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+                self.label_meas_time_Yxy.setText (f"Measured in: {toc - tic:0.2f} sec.")
+                self.lineEdit_hera_measure_Yxy_Y.setText(str(float (measure_all_result.split(",")[0])))
+                self.lineEdit_hera_measure_Yxy_x.setText(str(float (measure_all_result.split(",")[1])))
+                self.lineEdit_hera_measure_Yxy_y.setText(str(float (measure_all_result.split(",")[2])))
+                
+                if int (measure_all_result.split(",")[3]):
+                    self.lineEdit_hera_measure_Yxy_clip.setText("Yes!!!")
+                    self.lineEdit_hera_measure_Yxy_clip.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+                else:
+                    self.lineEdit_hera_measure_Yxy_clip.setText("No")
+                    self.lineEdit_hera_measure_Yxy_clip.setStyleSheet ("")
+                if int (measure_all_result.split(",")[4]):
+                    self.lineEdit_hera_measure_Yxy_noise.setText("Yes!!!")
+                    self.lineEdit_hera_measure_Yxy_noise.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+                else:
+                    self.lineEdit_hera_measure_Yxy_noise.setText("No")
+                    self.lineEdit_hera_measure_Yxy_noise.setStyleSheet ("")
+                
+                self.function_result_to_statusbar (command_py, error_write, "")
+                self.hera_reload_parameters()
+            else:
+                self.function_result_to_statusbar (command_py, error_read, "")
+                return
         else:
-            self.lineEdit_hera_measure_Yxy_clip.setText("No")
-            self.lineEdit_hera_measure_Yxy_clip.setStyleSheet ("")
-        if int (measure_all_result.split(",")[4]):
-            self.lineEdit_hera_measure_Yxy_noise.setText("Yes!!!")
-            self.lineEdit_hera_measure_Yxy_noise.setStyleSheet ("QLineEdit {background-color:lightcoral}")
-        else:
-            self.lineEdit_hera_measure_Yxy_noise.setText("No")
-            self.lineEdit_hera_measure_Yxy_noise.setStyleSheet ("")
+            self.function_result_to_statusbar (command_py, error_write, "")
 
-        self.function_result_to_statusbar (command_py, error_write, "")
-        self.hera_reload_parameters()
+
+
+    def clean_measure_Yxy_interface (self):
+        # Clean command interface
+        self.label_meas_time_Yxy.clear()
+        self.lineEdit_hera_measure_Yxy_clip.clear()
+        self.lineEdit_hera_measure_Yxy_clip.setStyleSheet ("")
+        self.lineEdit_hera_measure_Yxy_noise.clear()
+        self.lineEdit_hera_measure_Yxy_noise.setStyleSheet ("")
+        self.lineEdit_hera_measure_Yxy_Y.clear()
+        self.lineEdit_hera_measure_Yxy_x.clear()
+        self.lineEdit_hera_measure_Yxy_y.clear()
+
+        self.label_meas_time_Yxy.repaint()
+        self.lineEdit_hera_measure_Yxy_clip.repaint()
+        self.lineEdit_hera_measure_Yxy_noise.repaint()
+        self.lineEdit_hera_measure_Yxy_Y.repaint()
+        self.lineEdit_hera_measure_Yxy_x.repaint()
+        self.lineEdit_hera_measure_Yxy_y.repaint()
+
 
     def hera_measure_XYZ (self):
         # Measure XYZ - HERA
+
+        self.clean_measure_XYZ_interface()
+        self.label_meas_time_XYZ.setText("Measuring...")
+        self.label_meas_time_XYZ.repaint()
+
         command_py = ":MEASure:XYZ\n"
         buffer_length = len (command_py)
-        timeout_ms = 5000
+        timeout_ms = 30000
+        tic = time.perf_counter()
         error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        bytecount = 4096
-        read_data = ctypes.create_string_buffer (bytecount)
-        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
-        measure_all_result = read_data.value.decode("utf-8")[:error_read].strip()
-        print (f":MEASure:XYZ result is -{measure_all_result}-")
+        if not (error_write < 0):
+            bytecount = 4096
+            read_data = ctypes.create_string_buffer (bytecount)
+            error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+            toc = time.perf_counter()
+            if not (error_read < 0):
+                measure_all_result = read_data.value.decode("utf-8")[:error_read].strip()
+                print (f":MEASure:XYZ result is -{measure_all_result}-")
 
+                self.label_meas_time_XYZ.setText (f"Measured in: {toc - tic:0.2f} sec.")
+                self.lineEdit_hera_measure_XYZ_X.setText(str(float (measure_all_result.split(",")[0])))
+                self.lineEdit_hera_measure_XYZ_Y.setText(str(float (measure_all_result.split(",")[1])))
+                self.lineEdit_hera_measure_XYZ_Z.setText(str(float (measure_all_result.split(",")[2])))
+                
+                if int (measure_all_result.split(",")[3]):
+                    self.lineEdit_hera_measure_XYZ_clip.setText("Yes!!!")
+                    self.lineEdit_hera_measure_XYZ_clip.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+                else:
+                    self.lineEdit_hera_measure_XYZ_clip.setText("No")
+                    self.lineEdit_hera_measure_XYZ_clip.setStyleSheet ("")
+                if int (measure_all_result.split(",")[4]):
+                    self.lineEdit_hera_measure_XYZ_noise.setText("Yes!!!")
+                    self.lineEdit_hera_measure_XYZ_noise.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+                else:
+                    self.lineEdit_hera_measure_XYZ_noise.setText("No")
+                    self.lineEdit_hera_measure_XYZ_noise.setStyleSheet ("")
 
-        self.lineEdit_hera_measure_XYZ_X.setText(str(float (measure_all_result.split(",")[0])))
-        self.lineEdit_hera_measure_XYZ_Y.setText(str(float (measure_all_result.split(",")[1])))
-        self.lineEdit_hera_measure_XYZ_Z.setText(str(float (measure_all_result.split(",")[2])))
-        
-        if int (measure_all_result.split(",")[3]):
-            self.lineEdit_hera_measure_XYZ_clip.setText("Yes!!!")
-            self.lineEdit_hera_measure_XYZ_clip.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+                self.function_result_to_statusbar (command_py, error_write, "")
+                self.hera_reload_parameters()
+            else:
+                self.function_result_to_statusbar (command_py, error_read, "")
+                return
         else:
-            self.lineEdit_hera_measure_XYZ_clip.setText("No")
-            self.lineEdit_hera_measure_XYZ_clip.setStyleSheet ("")
-        if int (measure_all_result.split(",")[4]):
-            self.lineEdit_hera_measure_XYZ_noise.setText("Yes!!!")
-            self.lineEdit_hera_measure_XYZ_noise.setStyleSheet ("QLineEdit {background-color:lightcoral}")
-        else:
-            self.lineEdit_hera_measure_XYZ_noise.setText("No")
-            self.lineEdit_hera_measure_XYZ_noise.setStyleSheet ("")
+            self.function_result_to_statusbar (command_py, error_write, "")
 
-        self.function_result_to_statusbar (command_py, error_write, "")
-        self.hera_reload_parameters()
+
+    def clean_measure_XYZ_interface (self):
+        # Clean command interface
+        self.label_meas_time_XYZ.clear()
+        self.lineEdit_hera_measure_XYZ_clip.clear()
+        self.lineEdit_hera_measure_XYZ_clip.setStyleSheet ("")
+        self.lineEdit_hera_measure_XYZ_noise.clear()
+        self.lineEdit_hera_measure_XYZ_noise.setStyleSheet ("")
+        self.lineEdit_hera_measure_XYZ_X.clear()
+        self.lineEdit_hera_measure_XYZ_Y.clear()
+        self.lineEdit_hera_measure_XYZ_Z.clear()
+
+        self.label_meas_time_XYZ.repaint()
+        self.lineEdit_hera_measure_XYZ_clip.repaint()
+        self.lineEdit_hera_measure_XYZ_noise.repaint()
+        self.lineEdit_hera_measure_XYZ_X.repaint()
+        self.lineEdit_hera_measure_XYZ_Y.repaint()
+        self.lineEdit_hera_measure_XYZ_Z.repaint()
 
     def measure_arparms (self, who_is_calling):
         # Measure Auto-range parameters used in last measurement

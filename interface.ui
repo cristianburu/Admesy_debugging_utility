@@ -204,7 +204,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;320 - 1000000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;2500 - 20000000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
@@ -401,7 +401,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1 - 255&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;1 - 200&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -504,7 +504,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1 - 30&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;1 - 100&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -532,7 +532,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;1 - 255&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1464,7 +1464,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1/freq - 1s&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;2500 - 20000000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1705,7 +1705,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;1 - 255&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -1833,7 +1833,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1 - 30&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;1 - 100&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2077,7 +2077,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;320 - 1000000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;1000 - 500000&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="layoutDirection">
             <enum>Qt::LeftToRight</enum>
@@ -2108,7 +2108,7 @@ QGroupBox::title {
             </font>
            </property>
            <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;1 - 255&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Arial Narrow'; font-size:9pt; font-weight:600;&quot;&gt;1 - 200&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
            </property>
            <property name="alignment">
             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
@@ -2853,7 +2853,7 @@ QGroupBox::title {
         <property name="geometry">
          <rect>
           <x>22</x>
-          <y>84</y>
+          <y>87</y>
           <width>91</width>
           <height>21</height>
          </rect>
@@ -2884,8 +2884,8 @@ QGroupBox::title {
         <property name="geometry">
          <rect>
           <x>3</x>
-          <y>101</y>
-          <width>254</width>
+          <y>104</y>
+          <width>255</width>
           <height>37</height>
          </rect>
         </property>
@@ -2895,6 +2895,118 @@ QGroupBox::title {
          </property>
          <item row="0" column="5">
           <widget class="QLineEdit" name="lineEdit_hera_measure_XYZ_Z">
+           <property name="minimumSize">
+            <size>
+             <width>53</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>53</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" alignment="Qt::AlignRight|Qt::AlignVCenter">
+          <widget class="QLabel" name="label_gain_24">
+           <property name="minimumSize">
+            <size>
+             <width>11</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>11</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>X:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
+          <widget class="QLineEdit" name="lineEdit_hera_measure_XYZ_X">
+           <property name="minimumSize">
+            <size>
+             <width>53</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>53</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="toolTip">
+            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+           </property>
+           <property name="readOnly">
+            <bool>true</bool>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="4" alignment="Qt::AlignRight">
+          <widget class="QLabel" name="label_gain_34">
+           <property name="minimumSize">
+            <size>
+             <width>11</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>11</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Z:</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="3">
+          <widget class="QLineEdit" name="lineEdit_hera_measure_XYZ_Y">
            <property name="minimumSize">
             <size>
              <width>53</width>
@@ -2949,125 +3061,13 @@ QGroupBox::title {
            </property>
           </widget>
          </item>
-         <item row="0" column="4" alignment="Qt::AlignRight">
-          <widget class="QLabel" name="label_gain_34">
-           <property name="minimumSize">
-            <size>
-             <width>11</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>11</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Z:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="0" alignment="Qt::AlignRight|Qt::AlignVCenter">
-          <widget class="QLabel" name="label_gain_24">
-           <property name="minimumSize">
-            <size>
-             <width>11</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>11</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>X:</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="3">
-          <widget class="QLineEdit" name="lineEdit_hera_measure_XYZ_Y">
-           <property name="minimumSize">
-            <size>
-             <width>53</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>53</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QLineEdit" name="lineEdit_hera_measure_XYZ_X">
-           <property name="minimumSize">
-            <size>
-             <width>53</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>53</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="toolTip">
-            <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-family:Arial Narrow; font-size:9pt; font-weight:600;&quot;&gt;0 - 250.0&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly">
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
         </layout>
        </widget>
        <widget class="QWidget" name="horizontalLayoutWidget_4">
         <property name="geometry">
          <rect>
           <x>91</x>
-          <y>82</y>
+          <y>85</y>
           <width>151</width>
           <height>24</height>
          </rect>
@@ -3230,6 +3230,68 @@ QGroupBox::title {
          </item>
         </layout>
        </widget>
+       <widget class="QLabel" name="label_meas_time_Yxy">
+        <property name="geometry">
+         <rect>
+          <x>76</x>
+          <y>62</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>111</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>111</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Narrow</family>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Measurement time:</string>
+        </property>
+       </widget>
+       <widget class="QLabel" name="label_meas_time_XYZ">
+        <property name="geometry">
+         <rect>
+          <x>76</x>
+          <y>130</y>
+          <width>111</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>111</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>111</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Narrow</family>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <property name="text">
+         <string>Measurement time:</string>
+        </property>
+       </widget>
       </widget>
      </widget>
      <widget class="QWidget" name="widget_hera_07_measure_spectrum" native="true">
@@ -3308,38 +3370,38 @@ QGroupBox::title {
          <string>:MEASure:SPECtrum </string>
         </property>
        </widget>
-       <widget class="QPushButton" name="pushButton_hera_get_wavelengths">
-        <property name="geometry">
-         <rect>
-          <x>187</x>
-          <y>33</y>
-          <width>126</width>
-          <height>19</height>
-         </rect>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>126</width>
-          <height>19</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>126</width>
-          <height>19</height>
-         </size>
-        </property>
-        <property name="font">
-         <font>
-          <family>Arial Narrow</family>
-          <pointsize>8</pointsize>
-         </font>
-        </property>
-        <property name="text">
-         <string>:GET:WAVElengths</string>
-        </property>
-       </widget>
       </widget>
+     </widget>
+     <widget class="QPushButton" name="pushButton_hera_get_wavelengths">
+      <property name="geometry">
+       <rect>
+        <x>402</x>
+        <y>8</y>
+        <width>126</width>
+        <height>19</height>
+       </rect>
+      </property>
+      <property name="minimumSize">
+       <size>
+        <width>126</width>
+        <height>19</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>126</width>
+        <height>19</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Arial Narrow</family>
+        <pointsize>8</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>:GET:WAVElengths</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="tab_pcm2x">
