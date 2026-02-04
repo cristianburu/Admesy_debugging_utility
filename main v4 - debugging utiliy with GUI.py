@@ -2243,7 +2243,9 @@ if __name__ == "__main__":
     ptr_handle_spectro = ctypes.pointer (handle_spectro)
 
     # Enable High DPI display with PyQt5
-    QtWidgets.QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+    QApplication.setAttribute(QtCore.Qt.AA_EnableHighDpiScaling, True)
+    # QApplication.setHighDpiScaleFactorRoundingPolicy (QtCore.Qt.HighDpiScaleFactorRoundingPolicy.PassThrough)
+    QApplication.setHighDpiScaleFactorRoundingPolicy (QtCore.Qt.HighDpiScaleFactorRoundingPolicy.Ceil)
     
     app = QApplication (sys.argv)
     window = MainUI()
