@@ -153,7 +153,18 @@ class MainUI(QMainWindow):
 
         # Other parameters
         self.comboBox_hera_interp_method.currentIndexChanged.connect (self.hera_write_interp_method_memory)
-        self.comboBox_hera_res_write_only.currentIndexChanged.connect (self.hera_write_res_memory)
+
+        
+        
+        self.comboBox_hera_cal_memory.currentIndexChanged.connect (self.hera_write_cal_memory)
+
+
+
+        self.comboBox_hera_res_write_only.currentIndexChanged.connect (self.hera_write_res_memory_write_only)
+        self.comboBox_hera_sbw_write_only.currentIndexChanged.connect (self.hera_write_sbw_memory_write_only)
+
+
+        
 
 
         
@@ -523,9 +534,15 @@ class MainUI(QMainWindow):
         self.comboBox_hera_sbw_write_only.setCurrentIndex(-1)
         self.comboBox_hera_sbw_write_only.blockSignals(False)
 
-        # self.comboBox_hera_res_write_only.blockSignals(True)
-        # self.comboBox_hera_res_write_only.setCurrentIndex(-1)
-        # self.comboBox_hera_res_write_only.blockSignals(False)
+        self.comboBox_hera_res_write_only.blockSignals(True)
+        self.comboBox_hera_res_write_only.setCurrentIndex(-1)
+        self.comboBox_hera_res_write_only.blockSignals(False)
+
+        self.comboBox_hera_cal_memory.blockSignals(True)
+        self.comboBox_hera_cal_memory.setCurrentIndex(-1)
+        self.comboBox_hera_cal_memory.blockSignals(False)
+
+        
     
     def enable_interface_pcm2x (self):
         # Enable groups of widgets
@@ -1124,6 +1141,22 @@ class MainUI(QMainWindow):
         self.comboBox_hera_interp_method.setCurrentIndex (interpol_method_read)
         self.comboBox_hera_interp_method.blockSignals(False)
 
+
+        # Read from device Calibration Mode - from Internal Memory
+        command_py = ":SENSe:CAL?\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        bytecount = 4096
+        read_data = ctypes.create_string_buffer (bytecount)
+        error_read = py_usbtmc_read (ptr_handle_spectro, read_data, bytecount, timeout_ms)
+        cal_mode_read = int (read_data.value.decode("utf-8")[:error_read].strip())
+        print (f"Calibration mode from reload parameters is --{cal_mode_read}--")
+        self.comboBox_hera_cal_memory.blockSignals(True)
+        self.comboBox_hera_cal_memory.setCurrentIndex (cal_mode_read)
+        self.comboBox_hera_cal_memory.blockSignals(False)
+
+
         ######################
         #  Read from EEPROM  #
         ######################
@@ -1485,6 +1518,16 @@ class MainUI(QMainWindow):
         self.function_result_to_statusbar (command_py, error_write, "")
         self.hera_reload_parameters()
 
+    def hera_write_cal_memory (self):
+        # Write to device calibration mode - Internal Memory
+        cal_value = self.comboBox_hera_cal_memory.currentIndex()
+        command_py = ":SENSe:CAL " + str (cal_value) + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
+
     def hera_write_res_eeprom (self):
         # Write to device resolution - EEPROM
         res_value = self.comboBox_hera_res_eeprom.currentIndex()
@@ -1495,7 +1538,7 @@ class MainUI(QMainWindow):
         self.function_result_to_statusbar (command_py, error_write, "")
         self.hera_reload_parameters()
 
-    def hera_write_res_memory (self):
+    def hera_write_res_memory_write_only (self):
         # Write to device resolution - Internal Memory
         res_value = self.comboBox_hera_res_write_only.currentIndex()
         command_py = ":SENSe:RES " + str (res_value) + "\n"
@@ -1613,18 +1656,18 @@ class MainUI(QMainWindow):
         self.function_result_to_statusbar (command_py, error_write, "")
         self.hera_reload_parameters()
 
-        # def hera_write_sbw_eeprom (self):
-        # # Write to device calibration matrix (sbw) - eeprom
-        # sbw_string = self.comboBox_hera_sbw.currentText()
-        # command_py = ":EEPROM:CONFigure:SPSBW " + sbw_string + "\n"
-        # buffer_length = len (command_py)
-        # timeout_ms = 5000
-        # print ("#################")
-        # print ("I am working")
-        # print ("#################")
-        # error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
-        # self.function_result_to_statusbar (command_py, error_write, "")
-        # self.hera_reload_parameters()
+    def hera_write_sbw_memory_write_only (self):
+        # Write to device calibration matrix (sbw) - eeprom
+        sbw_string = self.comboBox_hera_sbw_write_only.currentText()
+        command_py = ":SENSe:SP:SBW " + sbw_string + "\n"
+        buffer_length = len (command_py)
+        timeout_ms = 5000
+        print ("#################")
+        print ("I am working")
+        print ("#################")
+        error_write = py_usbtmc_write(ptr_handle_spectro, command_py.encode('ASCII'), buffer_length, timeout_ms)
+        self.function_result_to_statusbar (command_py, error_write, "")
+        self.hera_reload_parameters()
 
 
     def hera_write_std_illuminant_eeprom (self):

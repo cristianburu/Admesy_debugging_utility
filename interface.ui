@@ -87,7 +87,7 @@
          <x>0</x>
          <y>0</y>
          <width>281</width>
-         <height>137</height>
+         <height>134</height>
         </rect>
        </property>
        <property name="font">
@@ -131,7 +131,7 @@ QGroupBox::title {
           <number>0</number>
          </property>
          <property name="verticalSpacing">
-          <number>6</number>
+          <number>5</number>
          </property>
          <item row="2" column="2">
           <widget class="QLabel" name="label_avg_5">
@@ -927,9 +927,9 @@ QGroupBox::title {
       <property name="geometry">
        <rect>
         <x>9</x>
-        <y>262</y>
-        <width>281</width>
-        <height>97</height>
+        <y>256</y>
+        <width>283</width>
+        <height>108</height>
        </rect>
       </property>
       <widget class="QGroupBox" name="groupBox_ar_params_10">
@@ -938,7 +938,7 @@ QGroupBox::title {
          <x>0</x>
          <y>0</y>
          <width>281</width>
-         <height>91</height>
+         <height>104</height>
         </rect>
        </property>
        <property name="font">
@@ -974,13 +974,66 @@ QGroupBox::title {
           <x>6</x>
           <y>16</y>
           <width>305</width>
-          <height>72</height>
+          <height>84</height>
          </rect>
         </property>
         <layout class="QGridLayout" name="gridLayout_7">
          <property name="horizontalSpacing">
           <number>2</number>
          </property>
+         <property name="verticalSpacing">
+          <number>6</number>
+         </property>
+         <item row="0" column="2">
+          <widget class="QLabel" name="label_int_time_28">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>:SENSe:INTERPOL</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="QLabel" name="label_ar_adjmin_5">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Cal. Matrix</string>
+           </property>
+          </widget>
+         </item>
          <item row="0" column="0">
           <widget class="QLabel" name="label_sbw_15">
            <property name="minimumSize">
@@ -1062,170 +1115,7 @@ QGroupBox::title {
            </item>
           </widget>
          </item>
-         <item row="1" column="2">
-          <widget class="QLabel" name="label_ar_max_int_time_9">
-           <property name="minimumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:SENSe:SP:SBW (write-only)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2">
-          <widget class="QLabel" name="label_int_time_28">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:SENSe:INTERPOL</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
-          <widget class="QLabel" name="label_ar_adjmin_5">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Cal. Matrix</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0">
-          <widget class="QLabel" name="label_ar_freq_4">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>Resolution</string>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2">
-          <widget class="QLabel" name="label_ar_max_int_time_10">
-           <property name="minimumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>161</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="text">
-            <string>:SENSe:RES (write-only)</string>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="comboBox_hera_sbw_write_only">
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>16</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Arial Narrow</family>
-             <pointsize>8</pointsize>
-            </font>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="editable">
-            <bool>false</bool>
-           </property>
-           <item>
-            <property name="text">
-             <string>off</string>
-            </property>
-           </item>
-           <item>
-            <property name="text">
-             <string>user</string>
-            </property>
-           </item>
-          </widget>
-         </item>
-         <item row="2" column="1">
+         <item row="3" column="1">
           <widget class="QComboBox" name="comboBox_hera_res_write_only">
            <property name="minimumSize">
             <size>
@@ -1279,6 +1169,210 @@ QGroupBox::title {
              <string>10nm</string>
             </property>
            </item>
+          </widget>
+         </item>
+         <item row="3" column="2">
+          <widget class="QLabel" name="label_ar_max_int_time_10">
+           <property name="minimumSize">
+            <size>
+             <width>161</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>161</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>:SENSe:RES (write-only)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="comboBox_hera_sbw_write_only">
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>60</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="editable">
+            <bool>false</bool>
+           </property>
+           <item>
+            <property name="text">
+             <string>off</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>user</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="3" column="0">
+          <widget class="QLabel" name="label_ar_freq_4">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Resolution</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="2">
+          <widget class="QLabel" name="label_ar_max_int_time_9">
+           <property name="minimumSize">
+            <size>
+             <width>161</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>161</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>:SENSe:SP:SBW (write-only)</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="QComboBox" name="comboBox_hera_cal_memory">
+           <property name="minimumSize">
+            <size>
+             <width>57</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>57</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="editable">
+            <bool>false</bool>
+           </property>
+           <property name="placeholderText">
+            <string>clooooosed</string>
+           </property>
+           <item>
+            <property name="text">
+             <string>factory</string>
+            </property>
+           </item>
+           <item>
+            <property name="text">
+             <string>user</string>
+            </property>
+           </item>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QLabel" name="label_int_time_29">
+           <property name="minimumSize">
+            <size>
+             <width>51</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>51</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>:SENSe:CAL</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QLabel" name="label_ar_adjmin_6">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Arial Narrow</family>
+             <pointsize>8</pointsize>
+            </font>
+           </property>
+           <property name="text">
+            <string>Cal. Mode</string>
+           </property>
           </widget>
          </item>
         </layout>
@@ -2427,7 +2521,7 @@ QGroupBox::title {
       <property name="geometry">
        <rect>
         <x>9</x>
-        <y>360</y>
+        <y>367</y>
         <width>286</width>
         <height>153</height>
        </rect>
@@ -2438,7 +2532,7 @@ QGroupBox::title {
          <x>0</x>
          <y>0</y>
          <width>281</width>
-         <height>147</height>
+         <height>140</height>
         </rect>
        </property>
        <property name="font">
@@ -2472,7 +2566,7 @@ QGroupBox::title {
         <property name="geometry">
          <rect>
           <x>3</x>
-          <y>36</y>
+          <y>33</y>
           <width>254</width>
           <height>37</height>
          </rect>
@@ -2853,7 +2947,7 @@ QGroupBox::title {
         <property name="geometry">
          <rect>
           <x>22</x>
-          <y>87</y>
+          <y>78</y>
           <width>91</width>
           <height>21</height>
          </rect>
@@ -2884,7 +2978,7 @@ QGroupBox::title {
         <property name="geometry">
          <rect>
           <x>3</x>
-          <y>104</y>
+          <y>93</y>
           <width>255</width>
           <height>37</height>
          </rect>
@@ -3067,7 +3161,7 @@ QGroupBox::title {
         <property name="geometry">
          <rect>
           <x>91</x>
-          <y>85</y>
+          <y>76</y>
           <width>151</width>
           <height>24</height>
          </rect>
@@ -3265,7 +3359,7 @@ QGroupBox::title {
         <property name="geometry">
          <rect>
           <x>76</x>
-          <y>130</y>
+          <y>121</y>
           <width>111</width>
           <height>16</height>
          </rect>
@@ -3375,8 +3469,8 @@ QGroupBox::title {
      <widget class="QPushButton" name="pushButton_hera_get_wavelengths">
       <property name="geometry">
        <rect>
-        <x>402</x>
-        <y>8</y>
+        <x>511</x>
+        <y>9</y>
         <width>126</width>
         <height>19</height>
        </rect>
