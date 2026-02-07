@@ -3495,6 +3495,40 @@ QGroupBox::title {
          <string>:GET:WAVElengths</string>
         </property>
        </widget>
+       <widget class="QLineEdit" name="lineEdit_get_wl">
+        <property name="geometry">
+         <rect>
+          <x>163</x>
+          <y>68</y>
+          <width>143</width>
+          <height>16</height>
+         </rect>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>143</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>143</width>
+          <height>16</height>
+         </size>
+        </property>
+        <property name="font">
+         <font>
+          <family>Arial Narrow</family>
+          <pointsize>8</pointsize>
+         </font>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+        </property>
+        <property name="readOnly">
+         <bool>true</bool>
+        </property>
+       </widget>
       </widget>
      </widget>
     </widget>

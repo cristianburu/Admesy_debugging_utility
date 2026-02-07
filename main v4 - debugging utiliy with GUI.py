@@ -234,6 +234,11 @@ class MainUI(QMainWindow):
         window2.close()
 
     def handle_focus_changed(self, old_widget, now_widget):
+
+        ######################
+        #  COLORIMETER TAB   #
+        ######################
+
         if self.lineEdit_ar_freq is old_widget:
             try:
                 ar_freq = float (self.lineEdit_ar_freq.text())
@@ -311,13 +316,77 @@ class MainUI(QMainWindow):
             try:
                 value1 = float (two_values.split(",")[0])
                 value2 = float (two_values.split(",")[1])
+            except IndexError:
+                self.colorimeter_reload_parameters()
+                return
+
+            try:
                 if (value1 < 0) or (value1 > 240) or (value2 < 1) or (value2 > 250):
                     self.colorimeter_reload_parameters()
                     return
             except ValueError:
                 self.colorimeter_reload_parameters()
                 return
-            
+
+        ########################################
+        #  COLORIMETER STARTUP VALUES WINDOW   #
+        ########################################
+
+        if window2.lineEdit_dut_freq_eeprom is old_widget:
+            try:
+                ar_freq = float (window2.lineEdit_dut_freq_eeprom.text())
+                if (ar_freq > 250.000000) or (ar_freq < 0):
+                    window2.colorimeter_reload_parameters_from_eeprom()
+            except ValueError:
+                window2.colorimeter_reload_parameters_from_eeprom()
+
+
+        if window2.lineEdit_adjmin_eeprom is old_widget:
+            try:
+                ar_adjmin = int (window2.lineEdit_adjmin_eeprom.text())
+                if (ar_adjmin > 30) or (ar_adjmin < 1):
+                    window2.colorimeter_reload_parameters_from_eeprom()
+            except ValueError:
+                window2.colorimeter_reload_parameters_from_eeprom()
+
+
+
+        if window2.lineEdit_frames_eeprom is old_widget:
+            try:
+                ar_frames = int (window2.lineEdit_frames_eeprom.text())
+                if (ar_frames > 255) or (ar_frames < 1):
+                    window2.colorimeter_reload_parameters_from_eeprom()
+            except ValueError:
+                window2.colorimeter_reload_parameters_from_eeprom()
+
+        if window2.lineEdit_max_int_time_eeprom is old_widget:
+            try:
+                ar_max_int_time = int (window2.lineEdit_max_int_time_eeprom.text())
+                if (ar_max_int_time > 1000000) or (ar_max_int_time < 1):
+                    window2.colorimeter_reload_parameters_from_eeprom()
+            except ValueError:
+                window2.colorimeter_reload_parameters_from_eeprom()
+
+
+
+        if window2.lineEdit_eeprom_avg is old_widget:
+            try:
+                ar_avg = int (window2.lineEdit_eeprom_avg.text())
+                if (ar_avg > 255) or (ar_avg < 1):
+                    window2.colorimeter_reload_parameters_from_eeprom()
+            except ValueError:
+                window2.colorimeter_reload_parameters_from_eeprom()      
+
+        if window2.lineEdit_int_time_eeprom is old_widget:
+            try:
+                ar_max_int_time = int (window2.lineEdit_int_time_eeprom.text())
+                if (ar_max_int_time > 1000000) or (ar_max_int_time < 1):
+                    window2.colorimeter_reload_parameters_from_eeprom()
+            except ValueError:
+                window2.colorimeter_reload_parameters_from_eeprom()
+
+
+
         ###############
         #  HERA TAB   #
         ###############
@@ -435,6 +504,12 @@ class MainUI(QMainWindow):
         self.lineEdit_measure_all_clip.clear()
         self.lineEdit_measure_all_noise.clear()
 
+        # Clear red background in case of clip        
+        self.lineEdit_measure_all_clip.setStyleSheet ("")
+        self.lineEdit_measure_all_noise.setStyleSheet ("")
+        self.lineEdit_measured_dut_freq_clip.setStyleSheet ("")
+        self.lineEdit_measured_dut_fund_freq_clip.setStyleSheet ("")
+
         # # Disable groups of widgets
         self.widget_00_startup_values.setEnabled (False)
         self.widget_00_reload_params.setEnabled (False)
@@ -497,6 +572,7 @@ class MainUI(QMainWindow):
         self.lineEdit_hera_adjmin.clear()
         self.lineEdit_hera_freq.clear()
         self.lineEdit_hera_max_int_time.clear()
+        self.lineEdit_get_wl.clear()
 
         # Clear labels
         self.label_meas_time_XYZ.clear()
@@ -573,7 +649,7 @@ class MainUI(QMainWindow):
 
 
     def enable_interface_hera (self):
-        # Disable groups of widgets
+        # Enable groups of widgets
         self.widget_hera_00_reload_params.setEnabled (True)
         self.widget_hera_01_connection.setEnabled (True)
         self.widget_hera_02_core_params.setEnabled (True)
@@ -581,7 +657,7 @@ class MainUI(QMainWindow):
         self.widget_hera_04_measure_all.setEnabled (True)
         self.widget_hera_05_eeprom_operations.setEnabled (True)
         self.widget_hera_06_eeprom_parameters.setEnabled (True)
-        # self.widget_hera_07_measure_spectrum.setEnabled (False)   - TO BE DONE
+        self.widget_hera_07_measure_spectrum.setEnabled (True)
 
     def toggle_connect_disconnect_pcm2x (self):
         if self.pushButton_connect.isChecked():
@@ -1860,11 +1936,16 @@ class MainUI(QMainWindow):
 
         # print (f"dut_freq is {dut_freq}")
         # print (f"dut_ampl is {dut_ampl}")
-        # print (f"dut_clip is {dut_clip}")
+        print (f"dut_clip is {dut_clip}")
 
         self.lineEdit_measured_dut_freq.setText (f"{dut_freq:0.3f}")
         self.lineEdit_measured_dut_freq_luma.setText (f"{dut_ampl:0.6f}")
         self.lineEdit_measured_dut_freq_clip.setText (f"{dut_clip:0.6f}")
+
+        if int (dut_clip):
+            self.lineEdit_measured_dut_freq_clip.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+        else:
+            self.lineEdit_measured_dut_freq_clip.setStyleSheet ("")
 
         if self.checkBox_auto_set_freq.isChecked():
             # Write to device DUT freq (:SENSe:FREQ)
@@ -1901,6 +1982,11 @@ class MainUI(QMainWindow):
         self.lineEdit_measured_dut_fund_freq.setText (f"{dut_fund_freq:0.3f}")
         self.lineEdit_measured_dut_fund_freq_luma.setText (f"{dut_fund_ampl:0.6f}")
         self.lineEdit_measured_dut_fund_freq_clip.setText (f"{dut_fund_clip:0.6f}")
+
+        if int (dut_fund_clip):
+            self.lineEdit_measured_dut_fund_freq_clip.setStyleSheet ("QLineEdit {background-color:lightcoral}")
+        else:
+            self.lineEdit_measured_dut_fund_freq_clip.setStyleSheet ("")
 
         self.function_result_to_statusbar (command_py, error_write, "")
         self.colorimeter_reload_parameters()
@@ -2126,9 +2212,12 @@ class MainUI(QMainWindow):
         print (f"error_write_spectrum is {error_write_spectrum}")
         print (f"error_read_spectrum is {error_read_spectrum}")
          
-        spectrum = frombuffer (read_data, dtype='>f', count=int (error_read_spectrum/4)) # >f = big-endian (MSB first)
+        float_array = frombuffer (read_data, dtype='>f', count=int (error_read_spectrum/4)) # >f = big-endian (MSB first)
         set_printoptions(suppress=True)
-        print (spectrum[0:])
+        clip_value = float_array [0]
+        spectrum = float_array [1:]
+        print (f"Clip value is {clip_value}")
+        print (spectrum)
         print (type(spectrum))
         print("Shape:", spectrum.shape)  
         print("Dimensions:", spectrum.ndim)  
@@ -2162,6 +2251,19 @@ class MainUI(QMainWindow):
         print("Size:", wl.size) 
         print("Data type:", wl.dtype)  
         print("Item size:", wl.itemsize)
+
+        first_wl = wl [0]
+        last_wl = wl [-1]
+        step_wl = wl [1] -  wl [0]
+        if (step_wl == 0.5) or (step_wl == 2.5):
+            wl_info = f"{int(first_wl)} nm - {int (last_wl)} nm / Step:{step_wl:0.1f} nm"
+        else:
+            wl_info = f"{int(first_wl)} nm - {int (last_wl)} nm / Step:{int (step_wl)} nm"
+
+        self.lineEdit_get_wl.setText (wl_info)
+
+
+        print (first_wl, last_wl, step_wl)
 
 
 
@@ -2519,6 +2621,16 @@ class SecondUI(QMainWindow):
         if (not self.lineEdit_max_int_time_eeprom.isModified()):
             return
         self.lineEdit_max_int_time_eeprom.setModified(False)
+
+        # Check minimum value allowed for Max. Int. Time
+        minimum_max_int_time = int (1000000 / float (self.lineEdit_dut_freq_eeprom.text()))
+        if int (self.lineEdit_max_int_time_eeprom.text()) < minimum_max_int_time:
+            window.statusbar.showMessage (f"Minimum value for Max. Int. Time is {minimum_max_int_time} μs at {float (self.lineEdit_dut_freq_eeprom.text()):0.2f} Hz",10000)
+            self.colorimeter_reload_parameters_from_eeprom()
+            return
+
+
+
         command_py = ":EEPROM:CONFigure:AUTO:MAXINT " + self.lineEdit_max_int_time_eeprom.text() + "\n"
         buffer_length = len (command_py)
         timeout_ms = 5000

@@ -13,35 +13,15 @@
 TODO
 ===============
 
-more robust error handling
-
-make autorange read more robust, la eroare primeste un mesaj defazat
-
-
-
-indexerror two_Values
-
-coduri Hera 0x....
-                * 0x23CF::0x1020	: Hera01
-                 * 0x23CF::0x1021	: Hera02
-				 * 0x23CF::0x1022	: Hera03
-                 * 0x23CF::0x1023	: Hera04
-
-
-functia status de organizat textele
-measure freq pcm2x clip de studiat pt background rosu
-
-
-
-de verificat daca autorange-ul chiar face ce trebuie
-
-la measure verificat timeout si schimbat sau bagat timeout prefs
-
-de inclus fontul in distributie !!!
-
-reload sa faca si la eeprom reload
-
-max int time din eeprom de verif conditia
+- More robust error handling, including autorange
+- Implement separate timeouts for measure/parameters, preferably as a user preference
+- Include font in distribution
+- Implement better spectrum measurement/save results
+- Identifiers to implement
+            0x1020 : Hera01 - done
+            0x1021 : Hera02
+            0x1022 : Hera03
+            0x1023 : Hera04
 
 
 
