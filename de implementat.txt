@@ -1,7 +1,12 @@
 0.1 - Initial release
+      Command line proof of concept
+
+0.2 - Extended parameters added
+
+0.3 - GUI version
       PCM2X Support for internal memory parameters
 
-0.2 - Added PCM2X EEPROM parameters
+0.4 - Added PCM2X EEPROM parameters
       Added Hera support
       Simultaneous operation of Hera and PCM2X
       Revamped interface
@@ -10,7 +15,7 @@
 
 
 
-TODO
+STILL TODO
 ===============
 
 - More robust error handling, including autorange

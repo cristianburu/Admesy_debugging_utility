@@ -218,40 +218,6 @@ def read_parameters_extended():
     whatever = input("Press any key to continue...")
     print("")
 
-def read_parameters_pcm2x():
-    print("")
-    print ("--------------------------------------------------------------------")
-    print ("               " + Back.RED + "\033[1m CURRENT PARAMETERS USED - EXTENDED \033[0m")
-    print ("--------------------------------------------------------------------")
-    
-    ##############################
-    # READ FROM INTERNAL MEMORY
-    ##############################
-
-    print ("                     " + Back.RED + "\033[1m Internal Memory Values \033[0m")
-    print ("--------------------------------------------------------------------")
-
-    # Read Auto-range from internal memory
-    autorange_returned_internal_mem = int(admesy_instrument.query(":SENSe:AUTORANGE?")[0])
-    if autorange_returned_internal_mem:
-        print (Back.RED + "\033[1mAuto-range:\033[0m" + Style.RESET_ALL + f"     Internal mem.  ON")
-    else:
-        print (Back.RED + "\033[1mAuto-range:\033[0m" + Style.RESET_ALL + f"     Internal mem.  OFF")
-
-    # Read Int. time from internal memory
-    int_time_returned_internal_mem = int(admesy_instrument.query(":SENSe:INT?")[0])
-    print(Back.RED + "\033[1mInt. time:\033[0m" + Style.RESET_ALL + f"      Internal mem.  {int_time_returned_internal_mem:d} μSeconds ({(int_time_returned_internal_mem/1000000):0.2f} seconds)")
-    
-    # Read Average from internal memory
-    avg_returned_internal_mem = int(admesy_instrument.query(":SENSe:AVERAGE?")[0])
-    print (Back.RED + "\033[1mAverage:\033[0m" + Style.RESET_ALL + f"        Internal mem.  {avg_returned_internal_mem}")
-    
-    print ("--------------------------------------------------------------------")
-    print("")
-    whatever = input("Press any key to continue...")
-    print("")
-
-
 def set_autorange_internal_mem():
     set_autorange_to = "UNDEFINED"
     print("")
@@ -326,7 +292,7 @@ def set_resolution_internal_mem():
     print("")
     while set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
         try:
-            set_resolution_to = float (input("Set Resolution (0.5/1/2/5/10) nm:"))
+            set_resolution_to = float (input("Set Resolution (0.5/1/2.5/5/10) nm:"))
             if set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
                 print("Please enter a valid option.")
         except ValueError:
@@ -472,7 +438,7 @@ def set_resolution_EEPROM():
     print("")
     while set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
         try:
-            set_resolution_to = float (input("Set Resolution (0.5/1/2/5/10) nm:"))
+            set_resolution_to = float (input("Set Resolution (0.5/1/2.5/5/10) nm:"))
             if set_resolution_to not in [0.5, 1, 2.5, 5, 10]:
                 print("Please enter a valid option.")
         except ValueError:
@@ -558,13 +524,12 @@ init(autoreset=True) # colorama autoreset
 print_hello_msg() # Initial greeting msg
 
 # Initial scan for device. If device is not found app exits.
-find_instruments = AdmesyFindInstruments('@py',0) # Scan for libusbtmc device
+find_instruments = AdmesyFindInstruments('',1) # Scan for NI-VISA device
 instrument_list = find_instruments.getList()
-print (f"Lista py este {instrument_list}")
 if not instrument_list:
-    find_instruments = AdmesyFindInstruments('',0) # Scan for NI-VISA device
+    find_instruments = AdmesyFindInstruments('@py',1) # 8Scan for libusbtmc device
     instrument_list = find_instruments.getList()
-    print (f"Lista NI-VISA este {instrument_list}")
+    print (instrument_list)
     if not instrument_list:
         print(Back.RED + "\033[1mNo Admesy USB device found!\033[0m")
         print("")
@@ -572,113 +537,105 @@ if not instrument_list:
         print("")
         exit()
 
+admesy_instrument = AdmesyInstrument(instrument_list[0]) # Instantiate the device found
 
-print (f"Prima pozitie din instrument_list este {instrument_list[0]}")
+admesy_instrument.timeout(5000) # Timeout is set in miliseconds. Set timeout of device to 60 seconds
 
-# admesy_instrument = AdmesyInstrument(instrument_list[0]) # Instantiate the device found
+print_formatted_device_info() # Show initial info on device
 
-# admesy_instrument.timeout(5000) # Timeout is set in miliseconds. Set timeout of device to 60 seconds
+# admesy_instrument.write(":EEPROM:STARTUP:READ") # Copies startup values from EEPROM to internal memory
 
-# read_parameters_pcm2x()
-
-
-
-
-# print_formatted_device_info() # Show initial info on device
-
-# # admesy_instrument.write(":EEPROM:STARTUP:READ") # Copies startup values from EEPROM to internal memory
-
-# while True:
+while True:
     
-#     # List commands
-#     print ("------------------------------")
-#     print (Back.RED + "\033[1mCommand List\033[0m")
-#     print ("------------------------------")
-#     print ("0. Measure Yxy")
-#     print ("1. Read extended parameters")
-#     print ("2. Internal Memory / Set Auto-range")
-#     print ("3. Internal Memory / Set Int. time")
-#     print ("4. Internal Memory / Set Average")
-#     print ("5. Internal Memory / Set interpolation method")   
-#     print ("6. EEPROM / Set Auto-range") 
-#     print ("7. EEPROM / Set Int. time") 
-#     print ("8. EEPROM / Set Average")
-#     print ("9. EEPROM / Set Adj. min")
-#     print ("10.EEPROM / Set Frequency")
-#     print ("11.EEPROM / Set Maximum Int. time")
-#     print ("12.EEPROM / Set Resolution")
-#     print ("13.EEPROM / Set interpolation method")
-#     print ("14.EEPROM / Set Absolute calibration method")
-#     print ("15.EEPROM / Set Calibration matrix")
-#     print ("16.EEPROM / Set Std. Illuminant")
-#     print ("17.Set timeout of device")
-#     print ("18.Write EEPROM values to startup settings")
-#     print ("19.Copy startup values from EEPROM to internal memory")
-#     print ("20.Internal Memory / Set Resolution (???)")
-#     print ("21.Internal Memory / Set Calibration matrix (???)")
-#     print ("22.Exit")
-#     print ("------------------------------")
+    # List commands
+    print ("------------------------------")
+    print (Back.RED + "\033[1mCommand List\033[0m")
+    print ("------------------------------")
+    print ("0. Measure Yxy")
+    print ("1. Read extended parameters")
+    print ("2. Internal Memory / Set Auto-range")
+    print ("3. Internal Memory / Set Int. time")
+    print ("4. Internal Memory / Set Average")
+    print ("5. Internal Memory / Set interpolation method")   
+    print ("6. EEPROM / Set Auto-range") 
+    print ("7. EEPROM / Set Int. time") 
+    print ("8. EEPROM / Set Average")
+    print ("9. EEPROM / Set Adj. min")
+    print ("10.EEPROM / Set Frequency")
+    print ("11.EEPROM / Set Maximum Int. time")
+    print ("12.EEPROM / Set Resolution")
+    print ("13.EEPROM / Set interpolation method")
+    print ("14.EEPROM / Set Absolute calibration method")
+    print ("15.EEPROM / Set Calibration matrix")
+    print ("16.EEPROM / Set Std. Illuminant")
+    print ("17.Set timeout of device")
+    print ("18.Write EEPROM values to startup settings")
+    print ("19.Copy startup values from EEPROM to internal memory")
+    print ("20.Internal Memory / Set Resolution (???)")
+    print ("21.Internal Memory / Set Calibration matrix (???)")
+    print ("22.Exit")
+    print ("------------------------------")
 
-#     # Command input
-#     command = -1
-#     while (command <0 or command>22):
-#         try:
-#             command = int(input("Waiting for command (0-22):"))
-#             if (command <0 or command>22):
-#                 print("Please enter a valid command.")
-#         except ValueError:
-#             print("Please enter a valid command.")
+    # Command input
+    command = -1
+    while (command <0 or command>22):
+        try:
+            command = int(input("Waiting for command (0-22):"))
+            if (command <0 or command>22):
+                print("Please enter a valid command.")
+        except ValueError:
+            print("Please enter a valid command.")
 
-#     # Branch execution
-#     if command == 0:
-#         measure_Yxy()
-#     elif command == 1:
-#         read_parameters_extended()
-#     elif command == 2:
-#         set_autorange_internal_mem()
-#     elif command == 3:
-#         set_int_time_internal_mem()
-#     elif command == 4:
-#         set_average_internal_mem()
-#     elif command == 5:
-#         set_interpol_method_internal_mem()
-#     elif command == 6:
-#         set_autorange_EEPROM()
-#     elif command == 7:
-#         set_int_time_EEPROM()
-#     elif command == 8:
-#         set_average_EEPROM()
-#     elif command == 9:
-#         set_adj_min_EEPROM()
-#     elif command == 10:
-#         set_frequency_EEPROM()
-#     elif command == 11:
-#         set_max_int_time_EEPROM()
-#     elif command == 12:
-#         set_resolution_EEPROM()
-#     elif command == 13:
-#         set_interpol_method_EEPROM()
-#     elif command == 14:
-#         set_abs_cal_method_EEPROM()
-#     elif command == 15:
-#         set_cal_matrix_EEPROM()
-#     elif command == 16:
-#         set_std_illuminant_EEPROM()
-#     elif command == 17:
-#         set_timeout()
-#     elif command == 18:
-#         write_startup_values()
-#     elif command == 19:
-#         read_startup_values()
-#     elif command == 20:
-#         set_resolution_internal_mem()
-#     elif command == 21:
-#         set_cal_matrix_internal_mem()
-#     else:
-#         print("")
-#         print (Back.RED + "\033[1mBye!\033[0m")
-#         print("")
-#         exit()
+    # Branch execution
+    if command == 0:
+        measure_Yxy()
+    elif command == 1:
+        read_parameters_extended()
+    elif command == 2:
+        set_autorange_internal_mem()
+    elif command == 3:
+        set_int_time_internal_mem()
+    elif command == 4:
+        set_average_internal_mem()
+    elif command == 5:
+        set_interpol_method_internal_mem()
+    elif command == 6:
+        set_autorange_EEPROM()
+    elif command == 7:
+        set_int_time_EEPROM()
+    elif command == 8:
+        set_average_EEPROM()
+    elif command == 9:
+        set_adj_min_EEPROM()
+    elif command == 10:
+        set_frequency_EEPROM()
+    elif command == 11:
+        set_max_int_time_EEPROM()
+    elif command == 12:
+        set_resolution_EEPROM()
+    elif command == 13:
+        set_interpol_method_EEPROM()
+    elif command == 14:
+        set_abs_cal_method_EEPROM()
+    elif command == 15:
+        set_cal_matrix_EEPROM()
+    elif command == 16:
+        set_std_illuminant_EEPROM()
+    elif command == 17:
+        set_timeout()
+    elif command == 18:
+        write_startup_values()
+    elif command == 19:
+        read_startup_values()
+    elif command == 20:
+        set_resolution_internal_mem()
+    elif command == 21:
+        set_cal_matrix_internal_mem()
+    else:
+        print("")
+        print (Back.RED + "\033[1mBye!\033[0m")
+        print("")
+        exit()
 
 
 
