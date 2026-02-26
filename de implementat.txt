@@ -28,7 +28,9 @@ STILL TODO
             0x1022 : Hera03
             0x1023 : Hera04
 
-
+wav2rgb o fi buna?
+interpolation face ceva?
+find time
 
 
 INSTRUCTIONS

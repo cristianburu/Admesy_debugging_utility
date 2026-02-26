@@ -5,3 +5,5 @@ Visa dll
 x64/
 Admesy.log
 testing/
+__pycache__/
+Screenshots/
